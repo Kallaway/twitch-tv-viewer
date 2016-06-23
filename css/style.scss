@@ -17,10 +17,12 @@ Alt Color Scheme
 /******** BASE STYLES *******/
 
 $bg-color: #0E1555;
+$main-text-color: #932B77;
 $font-stack: Helvetica, sans-serif; // Example
 
 body {
-  background-color: #$bg-color;
+  background-color: $bg-color;
+  color: $main-text-color;
 }
 
 
