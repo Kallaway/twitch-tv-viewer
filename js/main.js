@@ -4,7 +4,7 @@
 
 // Example Array of Names: ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "comster404"]
 
-let streamers = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "comster404"];
+let channels = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "comster404"];
 // maybe use a Promise instead?
 
 // let arr;
@@ -45,14 +45,11 @@ function sendTwitchRequest(url) {
 
 $(document).ready(function() {
 
-
   // window.onload = function() {
-    for (channel of streamers) {
+    for (channels of channels) {
       let requestURL = baseURL + channel + endURL;
       sendTwitchRequest(requestURL);
     }
-
-
     console.log(arr);
   // }
 
