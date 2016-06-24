@@ -20,6 +20,11 @@ body {
   color: #932B77; }
 
 /******** MAIN STYLES *******/
+#app-container {
+  width: 60%;
+  display: flex;
+  align-items: center; }
+
 /******** PSEUDO STYLES *******/
 
 /*# sourceMappingURL=style.css.map */
