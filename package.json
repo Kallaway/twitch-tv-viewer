@@ -1,0 +1,23 @@
+{
+  "name": "twitch-tv-status",
+  "version": "1.0.0",
+  "description": "This app gets info about a number of channels on TwitchTV.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kallaway/twitch-tv-viewer.git"
+  },
+  "author": "Alexander Kallaway",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kallaway/twitch-tv-viewer/issues"
+  },
+  "homepage": "https://github.com/Kallaway/twitch-tv-viewer#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.3.2"
+  }
+}

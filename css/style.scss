@@ -19,10 +19,12 @@ Alt Color Scheme
 $bg-color: #0E1555;
 $main-text-color: #932B77;
 $font-stack: Helvetica, sans-serif; // Example
+$test-color: #FEE785;
 
 body {
   background-color: $bg-color;
-  color: $main-text-color;
+  // color: $main-text-color;
+  color: $test-color;
 }
 
 

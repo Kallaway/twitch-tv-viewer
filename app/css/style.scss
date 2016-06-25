@@ -1,0 +1,38 @@
+/*
+Color Scheme
+
+
+#0E1555
+#4E1184
+#932B77
+#FD367E
+
+Alt Color Scheme
+#A42127
+#C83B3B
+#EF9B59
+#FEE785
+
+*/
+/******** BASE STYLES *******/
+
+$bg-color: #0E1555;
+$main-text-color: #932B77;
+$font-stack: Helvetica, sans-serif; // Example
+
+body {
+  background-color: $bg-color;
+  color: $main-text-color;
+}
+
+
+/******** MAIN STYLES *******/
+
+#app-container {
+  width: 60%;
+  display:flex;
+  align-items: center;
+
+}
+
+/******** PSEUDO STYLES *******/
