@@ -11,6 +11,17 @@ gulp.task('sass', function() {
     .pipe(gulp.dest('app/css'));
 });
 
+// 'app/scss/**/*.scss'
+
+// gulp.watch('files-to-watch', ['tasks', 'to', 'run']);
+gulp.watch('app/scss/style.scss', ['sass']);
+
+gulp.task('watch', function() {
+  gulp.watch('app/scss/style.scss', ['sass']);
+  // other watchers
+});
+
+
 /* EXAMPLE
 gulp.task('task-name', function () {
   return gulp.src('source-files') // Get source files with gulp.src

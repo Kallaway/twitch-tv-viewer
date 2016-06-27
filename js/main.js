@@ -2,7 +2,6 @@
 // TODO: Send request to TwitchTV API
 // TODO: Ask Annie to help choose the color scheme and think about the design together
 
-console.log("AAAAAAAAA");
 // Example Array of Names: ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "comster404"]
 
 let channels = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "comster404"];
@@ -28,12 +27,9 @@ function reqListener() {
 // Ref: https://api.twitch.tv/kraken/streams?game=StarCraft+II%3A+Heart+of+the+Swarm&channel=test_channel,test_channel2
 
 
-function buildStream(streamInfo) {
-  // arr.forEach(function(streamInfo){
-
-  if (streamInfo.stream !== null) {
-    console.log(streamInfo);
-
+function buildStreams(streamInfo) {
+  arr.forEach(function(streamInfo){
+    console.log("build streams runs, and the arr is " + arr);
     let block = $('div');
     block.addClass('stream-block');
     let game = streamInfo.stream.game;
@@ -42,16 +38,10 @@ function buildStream(streamInfo) {
     block.append(p);
     console.log("Appending this to results: " + block);
 
-    // streamElements.push(block);
-    // OR
 
-    // block.appendTo($results);
-    // $results.append(block); // append(block);
-  }
+    $results.append(block);
 
-    // $results.append(block);
-  //
-  // });
+  });
 }
 
 let streamElements = [];
@@ -67,25 +57,26 @@ $(document).ready(function() {
     // Build up the string
     callURL = baseURL + channel + endURL;
     console.log("URL it sends with is: " + callURL);
-    console.log("Testing changes *********");
     //
     $.getJSON(callURL, function(data) {
         console.log(data);
 
       }).success(function(response) {
         profiles.push(response);
-        //console.log(profiles[0]);
-        buildStream(response);
+        console.log(profiles[0]);
       }); // End of getJSON
 
     // if (profiles.length == channels.length-1) {// change to something else
 
     // }
     // check if the profiles array is the same length
+  }).success(function(array) {
+    console.log("code makes it here");
+    buildStreams(array);
   });
   // Make sure it only does it after the results came back
-  // console.log("code makes it here");
-  // buildStreams(profiles);
+  console.log("code makes it here");
+  buildStreams(profiles);
 
 }); // End of document.ready
 /*
