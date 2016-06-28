@@ -31,22 +31,62 @@ function reqListener() {
 function buildStream(streamInfo) {
   // arr.forEach(function(streamInfo){
 
+  if (streamInfo.status == 422) {
+    // This means that the channel no longer exists.
+    return;
+  }
+
   if (streamInfo.stream !== null) {
     console.log(streamInfo);
 
-    let block = $('div');
+    let block = $('<div>');
     block.addClass('stream-block');
+
+    let thumbnailUrl = streamInfo.stream.preview.small;
+    // let d_thumbnail = $('div').attr("src", thumbnailUrl);
+
+    let viewerCount = streamInfo.stream.viewers;
+    // let d_viewer = $('p').text("Viewers: " + viewerCount);
+
     let game = streamInfo.stream.game;
-    let p = $('p');
-    p.text(game);
-    block.append(p);
+    // let d_p = $('p');
+    // d_p.text(game);
+
+    // block.append(d_thumbnail);
+    // block.append(d_p);
+    // block.append(d_viewer);
+
     console.log("Appending this to results: " + block);
+
+
+    console.log("LALALALALALALALAL");
 
     // streamElements.push(block);
     // OR
+    block = $('div').attr('class', 'stream-block')
+      .html('<img src="' + thumbnailUrl + '" /><p>' + game + '</p><p>' + viewerCount + '</p>');
 
-    // block.appendTo($results);
-    // $results.append(block); // append(block);
+    console.log($results);
+    block.appendTo($results);
+
+    // $results.append('<div>', {'class': 'stream-block'})
+    //   .append('<img>', {'src': thumbnailUrl})
+    //   .append('<p>', {text: game})
+    //   .append('<p>', {text: "Viewers: " + viewerCount});
+
+      //
+      // $(function() {
+      //      $.each(widgets, function(i, item) {
+      //          $('<div>').attr('id', item.div.id).html(
+      //          $('<h1>').attr('class', item.h1.class).html(
+      //          $('<a>').attr({
+      //              'href' : item.a.href,
+      //              'class' : item.a.class
+      //          }).text(item.a.text))).appendTo('#container');
+      //      });
+      //  });
+
+    // $results.append(block);
   }
 
     // $results.append(block);
@@ -59,7 +99,6 @@ let streamElements = [];
 $(document).ready(function() {
 
   // create tabs
-
 
   var profiles = [];
 
