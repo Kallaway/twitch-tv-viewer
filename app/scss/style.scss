@@ -16,12 +16,12 @@ Alt Color Scheme
 */
 /******** BASE STYLES *******/
 
-$bg-color: #0E1555;
-$app-color: #4E1184;
-$main-text-color: #932B77;
+$bg-color: #ddd;
+$app-color: #0E1555;
+$main-text-color: #FEE785;
 $font-stack: 'Source Sans Pro', Helvetica, sans-serif; // Example
 $test-color: #ddd;
-$main-font-size: 2em;
+$main-font-size: 1.5em;
 
 body {
   background-color: $bg-color;
@@ -37,14 +37,19 @@ body {
 /******** MAIN STYLES *******/
 
 #app-container {
-  width: 80%;
-  display:flex;
-  justify-content: space-between;
+  width: 800px; /* used to be 80% */
+  display: flex;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
   // align-items: center;
   // margin: 0 auto;
 
+}
+
+#app-container div {
+  min-width: 600px; /* maybe move this to .stream-block */
+  color: $main-text-color;
 }
 
 #state-indicator {
@@ -54,8 +59,30 @@ body {
 #results {
   background-color: $app-color;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   flex-direction: column;
 }
+
+/* created using jQuery */
+
+.stream-block {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+  color: $main-text-color;
+}
+
+.channel-logo {
+  height: 75px;
+  width: 75px;
+}
+
+
+
+
+
+
+
+
 
 /******** PSEUDO STYLES *******/

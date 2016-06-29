@@ -2,15 +2,11 @@
 // TODO: Send request to TwitchTV API
 // TODO: Ask Annie to help choose the color scheme and think about the design together
 
-console.log("AAAAAAAAA");
-// Example Array of Names: ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "comster404"]
-
 let channels = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "comster404"];
 // maybe use a Promise instead?
 
-// let arr;
 let requestURL;
-let baseURL = 'https://api.twitch.tv/kraken/streams/';
+let baseURL = 'https://api.twitch.tv/kraken/channels/';
 let endURL = '?callback=?';
 let profiles;
 
@@ -32,72 +28,74 @@ function buildStream(streamInfo) {
   // arr.forEach(function(streamInfo){
 
   if (streamInfo.status == 422) {
-    // This means that the channel no longer exists.
+    // This means that the channel no longer exists. // closed
     return;
   }
 
-  if (streamInfo.stream !== null) {
     console.log(streamInfo);
+    // let block = $('<div>');
+    // block.addClass('stream-block');
 
-    let block = $('<div>');
-    block.addClass('stream-block');
+    /* EXAMPLE
+    {
+      mature: false,
+      status: "@dogwaddle working on Pomodoro Timer #Programming #LearningJavaScript ",
+      broadcaster_language: "en",
+      display_name: "FreeCodeCamp",
+      game: "Creative",
+      language: "en",
+      _id: 79776140,
+      name: "freecodecamp",
+      created_at: "2015-01-14T03:36:47Z",
+      updated_at: "2016-06-29T05:30:53Z",
+      delay: null,
+      logo: "https://static-cdn.jtvnw.net/jtv_user_pictures/freecodecamp-profile_image-d9514f2df0962329-300x300.png",
+      banner: null,
+      video_banner: "https://static-cdn.jtvnw.net/jtv_user_pictures/freecodecamp-channel_offline_image-b8e133c78cd51cb0-1920x1080.png",
+      background: null,
+      profile_banner: "https://static-cdn.jtvnw.net/jtv_user_pictures/freecodecamp-profile_banner-6f5e3445ff474aec-480.png",
+      profile_banner_background_color: null,
+      partner: false,
+      url: "https://www.twitch.tv/freecodecamp",
+      views: 153967,
+      followers: 9781,
+      _links: {
+        self: "https://api.twitch.tv/kraken/channels/freecodecamp",
+        follows: "https://api.twitch.tv/kraken/channels/freecodecamp/follows",
+        commercial: "https://api.twitch.tv/kraken/channels/freecodecamp/commercial",
+        stream_key: "https://api.twitch.tv/kraken/channels/freecodecamp/stream_key",
+        chat: "https://api.twitch.tv/kraken/chat/freecodecamp",
+        features: "https://api.twitch.tv/kraken/channels/freecodecamp/features",
+        subscriptions: "https://api.twitch.tv/kraken/channels/freecodecamp/subscriptions",
+        editors: "https://api.twitch.tv/kraken/channels/freecodecamp/editors",
+        teams: "https://api.twitch.tv/kraken/channels/freecodecamp/teams",
+        videos: "https://api.twitch.tv/kraken/channels/freecodecamp/videos"
+      }
+    }
+    */
 
-    let thumbnailUrl = streamInfo.stream.preview.small;
-    // let d_thumbnail = $('div').attr("src", thumbnailUrl);
+    let thumbnailUrl = streamInfo.logo;
+    let channelUrl = streamInfo.url; // use later
+    let name = streamInfo.display_name;
+    let status;
 
-    let viewerCount = streamInfo.stream.viewers;
-    // let d_viewer = $('p').text("Viewers: " + viewerCount);
+    if (streamInfo.stream != null) {
+      status = streamInfo.status;
+    } else {
+      status = 'Channel Offline'; // add a case for a channel that is no longer active.
+    }
 
-    let game = streamInfo.stream.game;
-    // let d_p = $('p');
-    // d_p.text(game);
-
-    // block.append(d_thumbnail);
-    // block.append(d_p);
-    // block.append(d_viewer);
-
-    console.log("Appending this to results: " + block);
-
-
-    console.log("LALALALALALALALAL");
-
-    // streamElements.push(block);
-    // OR
-    block = $('div').attr('class', 'stream-block')
-      .html('<img src="' + thumbnailUrl + '" /><p>' + game + '</p><p>' + viewerCount + '</p>');
+    // Improve this code.
+    $results.append($('<div><a href="' + channelUrl +  '"><img src="' + thumbnailUrl + '" class="channel-logo"/></a><a href="' + channelUrl +  '"><p>' + name + '</p></a><p>' + status + '</p></div>')
+            .attr({'class': 'stream-block'})
+          );
 
     console.log($results);
-    block.appendTo($results);
 
-    // $results.append('<div>', {'class': 'stream-block'})
-    //   .append('<img>', {'src': thumbnailUrl})
-    //   .append('<p>', {text: game})
-    //   .append('<p>', {text: "Viewers: " + viewerCount});
-
-      //
-      // $(function() {
-      //      $.each(widgets, function(i, item) {
-      //          $('<div>').attr('id', item.div.id).html(
-      //          $('<h1>').attr('class', item.h1.class).html(
-      //          $('<a>').attr({
-      //              'href' : item.a.href,
-      //              'class' : item.a.class
-      //          }).text(item.a.text))).appendTo('#container');
-      //      });
-      //  });
-
-    // $results.append(block);
-  }
-
-    // $results.append(block);
-  //
-  // });
 }
 
 let streamElements = [];
-
 $(document).ready(function() {
-
   // create tabs
 
   var profiles = [];
@@ -127,42 +125,3 @@ $(document).ready(function() {
   // buildStreams(profiles);
 
 }); // End of document.ready
-/*
-function sendTwitchRequest(url) {
-  console.log("URL it sends with is: " + url);
-  var arr;
-
-  // // Plain JavaScript Version
-  // let twitchReq = new XMLHttpRequest();
-  // twitchReq.addEventListener('load', reqListener);
-  // twitchReq.open('GET', requestURL);
-  // twitchReq.send();
-
-
-  $.getJSON(url, function(data) {
-          console.log(data);
-        }).success(function(res) {
-          arr.push(res);
-       });
-
-}
-
-$(document).ready(function() {
-
-  // window.onload = function() {
-    for (channel of channels) {
-      let requestURL = baseURL + channel + endURL;
-      sendTwitchRequest(requestURL);
-    }
-    console.log(arr);
-  // }
-
-
-});
-
-*/
-
-
-
-
-// do everything after the page has loaded? Or send the requests first? makes sense. then after page loads, display them.
