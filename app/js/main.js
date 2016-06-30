@@ -1,6 +1,9 @@
 // TODO: Modes: All, Online, Offline
 // TODO: Send request to TwitchTV API
 // TODO: Ask Annie to help choose the color scheme and think about the design together
+// TODO: On smaller screens, the status should either become invisible or be moved down
+// TODO: Color differently based on whether the account is online, offline, or deactivated
+// TODO: Animate adding blocks to the page
 
 let channels = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "comster404"];
 // maybe use a Promise instead?
@@ -29,7 +32,7 @@ function buildStream(streamInfo) {
 
   if (streamInfo.status == 422) {
     // This means that the channel no longer exists. // closed
-    return;
+    return; // change this or remove
   }
 
     console.log(streamInfo);
@@ -78,16 +81,24 @@ function buildStream(streamInfo) {
     let channelUrl = streamInfo.url; // use later
     let name = streamInfo.display_name;
     let status;
+    let statusColor;
 
-    if (streamInfo.stream != null) {
+    /*
+    $online-bg: #FD367E;
+    $offline-bg: #0E1555;
+    */
+
+    if (streamInfo.mature) {
       status = streamInfo.status;
+      statusColor = '#FD367E';
     } else {
       status = 'Channel Offline'; // add a case for a channel that is no longer active.
+      statusColor = '#0E1555';
     }
 
     // Improve this code.
-    $results.append($('<div><a href="' + channelUrl +  '"><img src="' + thumbnailUrl + '" class="channel-logo"/></a><a href="' + channelUrl +  '"><p>' + name + '</p></a><p>' + status + '</p></div>')
-            .attr({'class': 'stream-block'})
+    $results.append($('<div><a href="' + channelUrl +  '" target="_blank"><img src="' + thumbnailUrl + '" class="channel-logo"/></a><a href="' + channelUrl +  '"><p>' + name + '</p></a><p>' + status + '</p></div>')
+            .attr({'class': 'stream-block' }).css('background-color', statusColor)
           );
 
     console.log($results);

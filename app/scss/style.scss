@@ -13,12 +13,31 @@ Alt Color Scheme
 #EF9B59
 #FEE785
 
+
+#252839
+#677077
+#b5b5b7
+#f2b632
+
+#c9c9c9
+#e3e3e3
+#9ad3de
+#89bdd3
+
 */
 /******** BASE STYLES *******/
 
-$bg-color: #ddd;
-$app-color: #0E1555;
-$main-text-color: #FEE785;
+
+// testing
+$online-bg: #FD367E;
+$offline-bg: #0E1555;
+//
+
+$link-color: #FEE785;
+$bg-color: #c9c9c9;
+$app-color: #89bdd3;
+$alt-app-color: #9ad3de;
+$main-text-color: #e3e3e3;
 $font-stack: 'Source Sans Pro', Helvetica, sans-serif; // Example
 $test-color: #ddd;
 $main-font-size: 1.5em;
@@ -30,7 +49,12 @@ body {
   font-size: $main-font-size;
   display:flex;
   justify-content: center;
+  font-family: $font-stack;
+}
 
+a {
+  color: $link-color;
+  text-decoration: none;
 }
 
 
@@ -45,15 +69,23 @@ body {
   // align-items: center;
   // margin: 0 auto;
 
+
 }
 
 #app-container div {
   min-width: 600px; /* maybe move this to .stream-block */
   color: $main-text-color;
+
 }
 
 #state-indicator {
-  background-color: $app-color;
+  // background-color: $app-color;
+  background-color: $alt-app-color;
+  display: flex;
+  justify-content: center;
+  padding: 5% 0;
+  font-size: 2em;
+
 }
 
 #results {
@@ -61,6 +93,7 @@ body {
   display: flex;
   justify-content: space-around;
   flex-direction: column;
+  // border-radius: 5%;
 }
 
 /* created using jQuery */
@@ -70,11 +103,18 @@ body {
   flex-direction: row;
   justify-content: space-around;
   color: $main-text-color;
+  // padding: 25px auto;
+}
+
+.stream-block children { // not working
+  flex-basis: 20%;
 }
 
 .channel-logo {
   height: 75px;
   width: 75px;
+  border-radius: 50%;
+  border: 2px solid $bg-color;
 }
 
 
