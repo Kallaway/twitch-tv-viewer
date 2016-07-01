@@ -40,7 +40,7 @@ $alt-app-color: #9ad3de;
 $main-text-color: #e3e3e3;
 $font-stack: 'Source Sans Pro', Helvetica, sans-serif; // Example
 $test-color: #ddd;
-$main-font-size: 1.5em;
+$main-font-size: 1.2em;
 
 body {
   background-color: $bg-color;
@@ -88,11 +88,19 @@ a {
 
 }
 
+.filter-buttons {
+  background-color: $alt-app-color;
+  display: flex;
+  // justify-content: flex-end;
+  flex-direction: column;
+}
+
 #results {
   background-color: $app-color;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
   flex-direction: column;
+  padding: 5% auto;
   // border-radius: 5%;
 }
 

@@ -83,6 +83,8 @@ function buildStream(streamInfo) {
     let status;
     let statusColor;
 
+    let statusOnOff;
+
     /*
     $online-bg: #FD367E;
     $offline-bg: #0E1555;
@@ -91,14 +93,18 @@ function buildStream(streamInfo) {
     if (streamInfo.mature) {
       status = streamInfo.status;
       statusColor = '#FD367E';
+      statusOnOff = "online";
     } else {
       status = 'Channel Offline'; // add a case for a channel that is no longer active.
       statusColor = '#0E1555';
+      statusOnOff = "offline";
     }
 
     // Improve this code.
     $results.append($('<div><a href="' + channelUrl +  '" target="_blank"><img src="' + thumbnailUrl + '" class="channel-logo"/></a><a href="' + channelUrl +  '"><p>' + name + '</p></a><p>' + status + '</p></div>')
-            .attr({'class': 'stream-block' }).css('background-color', statusColor)
+            .attr({'class': 'stream-block' })
+            .css('background-color', statusColor)
+            .addClass(statusOnOff)
           );
 
     console.log($results);
@@ -125,14 +131,48 @@ $(document).ready(function() {
         //console.log(profiles[0]);
         buildStream(response);
       }); // End of getJSON
-
-    // if (profiles.length == channels.length-1) {// change to something else
-
-    // }
-    // check if the profiles array is the same length
   });
+
   // Make sure it only does it after the results came back
   // console.log("code makes it here");
   // buildStreams(profiles);
 
+  let $showAll = $('#show-all');
+  let $showOnline = $('#show-online');
+  let $showOffline = $('#show-offline');
+
+  $showAll.on('click', function() {
+    $('#results div').slideDown(300); // but show them one by one maybe?
+  });
+
+  $showOnline.on('click', function() {
+    // experiment
+    // $('#results div').hide();
+    $('#results div').each(function() {
+      if ($(this).hasClass('online')) {
+        $(this).slideDown(300);
+      } else {
+        $(this).slideUp(300);
+      }
+    });
+  });
+
+  $showOffline.on('click', function() {
+    $('#results div').each(function() {
+      if ($(this).hasClass('offline')) {
+        $(this).slideDown(300);
+      } else {
+        $(this).slideUp(300);
+      }
+    });
+  });
+
 }); // End of document.ready
+
+
+
+
+
+
+
+//
