@@ -17,13 +17,19 @@
   </head>
   <body>
     <div id="app-container">
+
       <!-- <p>Testing SCSS workings</p> -->
       <div id="state-indicator">Twitch streamers</div>
+      <div>
+        <input type="text" id="search-box" placeholder="Input channel to add" />
+        <button id="search-button">Add</button>
+      </div>
       <div class="filter-buttons">
         <div class="filter-button" id="show-all">All</div>
         <div class="filter-button" id="show-online">Online</div>
         <div class="filter-button" id="show-offline">Offline</div>
       </div>
+      <hr id="results-line" />
       <div id="results">
         <!-- results should go here. -->
       </div>

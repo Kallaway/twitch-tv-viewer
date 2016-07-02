@@ -24,10 +24,16 @@ Alt Color Scheme
 #9ad3de
 #89bdd3
 
+#001F3F
+#083358
+#FFD717
+#0DA574
+
+
 */
 /******** BASE STYLES *******/
 body {
-  background-color: #c9c9c9;
+  background-color: #001F3F;
   color: #ddd;
   font-size: 1.2em;
   display: flex;
@@ -43,29 +49,53 @@ a {
   width: 800px;
   /* used to be 80% */
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   flex-direction: column; }
 
 #app-container div {
+  background-color: #083358;
   min-width: 600px;
   /* maybe move this to .stream-block */
-  color: #e3e3e3; }
+  color: #e3e3e3;
+  text-align: center; }
+
+#app-container input {
+  background-color: #e3e3e3;
+  color: #0DA574;
+  margin: 0 auto;
+  /* round corners */
+  border-radius: 15px;
+  font-size: 1.2em;
+  text-align: center;
+  outline: none; }
 
 #state-indicator {
-  background-color: #9ad3de;
+  background-color: #0DA574;
   display: flex;
   justify-content: center;
   padding: 5% 0;
-  font-size: 2em; }
+  font-size: 2em;
+  color: #0DA574; }
 
 .filter-buttons {
-  background-color: #9ad3de;
+  background-color: #0DA574;
   display: flex;
   flex-direction: column; }
 
+.filter-button {
+  cursor: pointer; }
+
+#results-line {
+  width: 50%;
+  background-color: red;
+  display: block;
+  height: 1px;
+  border: 3;
+  border-top: 1px solid #ccc; }
+
 #results {
-  background-color: #89bdd3;
+  background-color: #0DA574;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
@@ -78,13 +108,14 @@ a {
   justify-content: space-around;
   color: #e3e3e3; }
 
-.stream-block children {
-  flex-basis: 20%; }
+.stream-block img,
+.stream-block p {
+  display: flex; }
 
 .channel-logo {
   height: 75px;
   width: 75px;
   border-radius: 50%;
-  border: 2px solid #c9c9c9; }
+  border: 2px solid #001F3F; }
 
 /******** PSEUDO STYLES *******/

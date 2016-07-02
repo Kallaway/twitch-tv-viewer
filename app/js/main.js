@@ -1,9 +1,14 @@
+'use strict';
+
 // TODO: Modes: All, Online, Offline
 // TODO: Send request to TwitchTV API
 // TODO: Ask Annie to help choose the color scheme and think about the design together
 // TODO: On smaller screens, the status should either become invisible or be moved down
 // TODO: Color differently based on whether the account is online, offline, or deactivated
 // TODO: Animate adding blocks to the page
+// TODO: Search
+// TODO: Filter online people to the top?
+// TODO: Some sort of a line break between results and controls
 
 let channels = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "comster404"];
 // maybe use a Promise instead?
@@ -77,32 +82,26 @@ function buildStream(streamInfo) {
     }
     */
 
-    let thumbnailUrl = streamInfo.logo;
-    let channelUrl = streamInfo.url; // use later
-    let name = streamInfo.display_name;
-    let status;
-    let statusColor;
-
-    let statusOnOff;
-
-    /*
-    $online-bg: #FD367E;
-    $offline-bg: #0E1555;
-    */
+    let thumbnailUrl = streamInfo.logo,
+        channelUrl = streamInfo.url,
+        name = streamInfo.display_name,
+        status,
+        statusColor,
+        statusOnOff;
 
     if (streamInfo.mature) {
       status = streamInfo.status;
-      statusColor = '#FD367E';
+      statusColor = '#0DA574';
       statusOnOff = "online";
     } else {
       status = 'Channel Offline'; // add a case for a channel that is no longer active.
-      statusColor = '#0E1555';
+      statusColor = '#083358';
       statusOnOff = "offline";
     }
 
     // Improve this code.
-    $results.append($('<div><a href="' + channelUrl +  '" target="_blank"><img src="' + thumbnailUrl + '" class="channel-logo"/></a><a href="' + channelUrl +  '"><p>' + name + '</p></a><p>' + status + '</p></div>')
-            .attr({'class': 'stream-block' })
+    $results.append($('<a href="' +  channelUrl + '" target="_blank"><div class="stream-block"><img src="' + thumbnailUrl + '" class="channel-logo"/><p>' + name + '</p><p>' + status + '</p></div></a>')
+            // .attr({'class': 'stream-block' })
             .css('background-color', statusColor)
             .addClass(statusOnOff)
           );
@@ -111,7 +110,9 @@ function buildStream(streamInfo) {
 
 }
 
-let streamElements = [];
+let streamElements = [],
+    callURL;
+
 $(document).ready(function() {
   // create tabs
 
@@ -137,9 +138,21 @@ $(document).ready(function() {
   // console.log("code makes it here");
   // buildStreams(profiles);
 
-  let $showAll = $('#show-all');
-  let $showOnline = $('#show-online');
-  let $showOffline = $('#show-offline');
+  let $showAll = $('#show-all'),
+      $showOnline = $('#show-online'),
+      $showOffline = $('#show-offline'),
+      $searchButton = $('#search-button'),
+      $searchInput = $('#search-box');
+
+  // Remove placeholder text on search input focus
+  $searchInput.on('focus', function() {
+    $searchInput.data('placeholder', $(this).attr('placeholder'))
+      .attr('placeholder', '');
+  }).on('blur', function() {
+    $(this).attr('placeholder', $(this).data('placeholder'));
+  });
+
+  // Filter Buttons
 
   $showAll.on('click', function() {
     $('#results div').slideDown(300); // but show them one by one maybe?
@@ -166,6 +179,34 @@ $(document).ready(function() {
       }
     });
   });
+
+  $searchButton.on('click', searchDisplayChannel);
+
+  $searchInput.keypress(function(ev) {
+    if (ev.which == 13) {
+      searchDisplayChannel();
+      // reorder the results. OR
+    }
+  });
+
+  function searchDisplayChannel() {
+    let searchChannel = $searchInput.val();
+
+    console.log("Searching for the following channel:" + searchChannel);
+
+    // this should be a separate function;
+    callURL = baseURL + searchChannel + endURL;
+    $.getJSON(callURL, function(data) {
+        console.log(data);
+
+      }).success(function(response) {
+        profiles.shift(response);
+        //console.log(profiles[0]);
+        buildStream(response);
+      });
+  }
+
+
 
 }); // End of document.ready
 

@@ -24,19 +24,25 @@ Alt Color Scheme
 #9ad3de
 #89bdd3
 
+#001F3F
+#083358
+#FFD717
+#0DA574
+
+
 */
 /******** BASE STYLES *******/
 
 
 // testing
-$online-bg: #FD367E;
-$offline-bg: #0E1555;
+$online-bg: #0DA574;
+$offline-bg: #083358;
 //
 
 $link-color: #FEE785;
-$bg-color: #c9c9c9;
-$app-color: #89bdd3;
-$alt-app-color: #9ad3de;
+$bg-color: #001F3F;
+$app-color: #0DA574;
+$alt-app-color: #0DA574;
 $main-text-color: #e3e3e3;
 $font-stack: 'Source Sans Pro', Helvetica, sans-serif; // Example
 $test-color: #ddd;
@@ -61,9 +67,10 @@ a {
 /******** MAIN STYLES *******/
 
 #app-container {
+
   width: 800px; /* used to be 80% */
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
   // align-items: center;
@@ -73,10 +80,27 @@ a {
 }
 
 #app-container div {
+  background-color: $offline-bg;
   min-width: 600px; /* maybe move this to .stream-block */
   color: $main-text-color;
+  text-align: center;
 
 }
+
+#app-container input {
+  background-color: $main-text-color;
+  color: $app-color;
+  margin: 0 auto;
+  /* round corners */
+  border-radius: 15px;
+  font-size: 1.2em;
+  text-align: center;
+  outline: none;
+}
+
+// #app-container input::placeholder {
+//   color: $main-text-color;
+// }
 
 #state-indicator {
   // background-color: $app-color;
@@ -85,7 +109,7 @@ a {
   justify-content: center;
   padding: 5% 0;
   font-size: 2em;
-
+  color: $app-color; // why doesn't this work
 }
 
 .filter-buttons {
@@ -93,6 +117,22 @@ a {
   display: flex;
   // justify-content: flex-end;
   flex-direction: column;
+}
+
+.filter-button {
+  cursor: pointer;
+}
+
+#results-line {
+  width: 50%;
+  background-color: red;
+
+  display: block;
+  height: 1px;
+  border: 3;
+  border-top: 1px solid #ccc;
+  // margin: 1em 0;
+  // padding: 0;
 }
 
 #results {
@@ -114,8 +154,14 @@ a {
   // padding: 25px auto;
 }
 
-.stream-block children { // not working
-  flex-basis: 20%;
+// .stream-block children { // not working
+//   flex-basis: 20%;
+// }
+
+.stream-block img,
+.stream-block p {
+  display: flex;
+
 }
 
 .channel-logo {
