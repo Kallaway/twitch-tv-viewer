@@ -67,8 +67,8 @@ a {
 /******** MAIN STYLES *******/
 
 #app-container {
-
-  width: 800px; /* used to be 80% */
+  background-color: $offline-bg;
+  width: 600px; /* used to be 80% */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -81,9 +81,29 @@ a {
 
 #app-container div {
   background-color: $offline-bg;
-  min-width: 600px; /* maybe move this to .stream-block */
+  // min-width: 600px; /* maybe move this to .stream-block */
   color: $main-text-color;
   text-align: center;
+
+}
+
+.search-block {
+  margin: 2% 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around; // check
+  align-items: center;
+  color: $main-text-color;
+  background-color: $app-color;
+}
+
+#search-button {
+  margin: 5% 0;
+  max-width: 50px;
+  font-size: 1em;
+}
+
+.filter-buttons {
 
 }
 
@@ -96,11 +116,12 @@ a {
   font-size: 1.2em;
   text-align: center;
   outline: none;
+  border: none;
 }
 
-// #app-container input::placeholder {
-//   color: $main-text-color;
-// }
+#app-container input::-webkit-input-placeholder {
+  color: $app-color;
+}
 
 #state-indicator {
   // background-color: $app-color;
@@ -110,13 +131,22 @@ a {
   padding: 5% 0;
   font-size: 2em;
   color: $app-color; // why doesn't this work
+
 }
 
 .filter-buttons {
   background-color: $alt-app-color;
   display: flex;
-  // justify-content: flex-end;
-  flex-direction: column;
+  // align-items: center;
+  justify-content: space-around;
+  flex-direction: row;
+  // flex-basis: 1;
+  // flex: 3;
+}
+
+.filter-button {
+  // flex-basis: 1;
+  flex-grow: 1;
 }
 
 .filter-button {
@@ -140,7 +170,7 @@ a {
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
-  padding: 5% auto;
+
   // border-radius: 5%;
 }
 
@@ -149,8 +179,11 @@ a {
 .stream-block {
   display:flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: flex-start;
+  align-items: center;
   color: $main-text-color;
+  padding: 5px 0px;
+  min-width: 600px;
   // padding: 25px auto;
 }
 
@@ -161,7 +194,6 @@ a {
 .stream-block img,
 .stream-block p {
   display: flex;
-
 }
 
 .channel-logo {
@@ -169,6 +201,17 @@ a {
   width: 75px;
   border-radius: 50%;
   border: 2px solid $bg-color;
+  margin: 0 25px;
+  // width: %;
+}
+
+.stream-block p {
+  margin: 0 30px;
+  width: 30%;
+}
+
+.online {
+  background-color: $app-color;
 }
 
 

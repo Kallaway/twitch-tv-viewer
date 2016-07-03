@@ -46,7 +46,8 @@ a {
 
 /******** MAIN STYLES *******/
 #app-container {
-  width: 800px;
+  background-color: #083358;
+  width: 600px;
   /* used to be 80% */
   display: flex;
   justify-content: center;
@@ -55,10 +56,22 @@ a {
 
 #app-container div {
   background-color: #083358;
-  min-width: 600px;
-  /* maybe move this to .stream-block */
   color: #e3e3e3;
   text-align: center; }
+
+.search-block {
+  margin: 2% 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  color: #e3e3e3;
+  background-color: #0DA574; }
+
+#search-button {
+  margin: 5% 0;
+  max-width: 50px;
+  font-size: 1em; }
 
 #app-container input {
   background-color: #e3e3e3;
@@ -68,7 +81,11 @@ a {
   border-radius: 15px;
   font-size: 1.2em;
   text-align: center;
-  outline: none; }
+  outline: none;
+  border: none; }
+
+#app-container input::-webkit-input-placeholder {
+  color: #0DA574; }
 
 #state-indicator {
   background-color: #0DA574;
@@ -81,7 +98,11 @@ a {
 .filter-buttons {
   background-color: #0DA574;
   display: flex;
-  flex-direction: column; }
+  justify-content: space-around;
+  flex-direction: row; }
+
+.filter-button {
+  flex-grow: 1; }
 
 .filter-button {
   cursor: pointer; }
@@ -98,15 +119,17 @@ a {
   background-color: #0DA574;
   display: flex;
   justify-content: flex-start;
-  flex-direction: column;
-  padding: 5% auto; }
+  flex-direction: column; }
 
 /* created using jQuery */
 .stream-block {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  color: #e3e3e3; }
+  justify-content: flex-start;
+  align-items: center;
+  color: #e3e3e3;
+  padding: 5px 0px;
+  min-width: 600px; }
 
 .stream-block img,
 .stream-block p {
@@ -116,6 +139,14 @@ a {
   height: 75px;
   width: 75px;
   border-radius: 50%;
-  border: 2px solid #001F3F; }
+  border: 2px solid #001F3F;
+  margin: 0 25px; }
+
+.stream-block p {
+  margin: 0 30px;
+  width: 30%; }
+
+.online {
+  background-color: #0DA574; }
 
 /******** PSEUDO STYLES *******/

@@ -1,24 +1,20 @@
 'use strict';
 
 // TODO: Modes: All, Online, Offline
-// TODO: Send request to TwitchTV API
-// TODO: Ask Annie to help choose the color scheme and think about the design together
 // TODO: On smaller screens, the status should either become invisible or be moved down
 // TODO: Color differently based on whether the account is online, offline, or deactivated
-// TODO: Animate adding blocks to the page
-// TODO: Search
-// TODO: Filter online people to the top?
+// TODO: Filter online people to the top? on press of Online
+// TODO: Filter new people to the top?
 // TODO: Some sort of a line break between results and controls
+// TODO: If search is done with an empty string, don't do anything
 
-let channels = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "comster404"];
 // maybe use a Promise instead?
-
-let requestURL;
-let baseURL = 'https://api.twitch.tv/kraken/channels/';
-let endURL = '?callback=?';
-let profiles;
-
-let $results = $('#results');
+let channels = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "comster404"],
+    requestURL,
+    baseURL = 'https://api.twitch.tv/kraken/channels/',
+    endURL = '?callback=?',
+    profiles,
+    $results = $('#results');
 
 function collectChannelInfo() {
 
@@ -30,8 +26,6 @@ function reqListener() {
 }
 
 // Ref: https://api.twitch.tv/kraken/streams?game=StarCraft+II%3A+Heart+of+the+Swarm&channel=test_channel,test_channel2
-
-
 function buildStream(streamInfo) {
   // arr.forEach(function(streamInfo){
 
@@ -99,10 +93,10 @@ function buildStream(streamInfo) {
       statusOnOff = "offline";
     }
 
-    // Improve this code.
+    // Improve this code. // first create then animate show 
     $results.append($('<a href="' +  channelUrl + '" target="_blank"><div class="stream-block"><img src="' + thumbnailUrl + '" class="channel-logo"/><p>' + name + '</p><p>' + status + '</p></div></a>')
             // .attr({'class': 'stream-block' })
-            .css('background-color', statusColor)
+            .children().css('background-color', statusColor)
             .addClass(statusOnOff)
           );
 
@@ -129,10 +123,17 @@ $(document).ready(function() {
 
       }).success(function(response) {
         profiles.push(response);
-        //console.log(profiles[0]);
-        buildStream(response);
+
+        if (profiles.length == channels.length) {
+          displayResults();
+        }
       }); // End of getJSON
-  });
+  })
+  // .success(function() {
+  //
+  // });
+
+
 
   // Make sure it only does it after the results came back
   // console.log("code makes it here");
@@ -201,11 +202,34 @@ $(document).ready(function() {
 
       }).success(function(response) {
         profiles.shift(response);
+        console.log("Profiles: " + profiles);
         //console.log(profiles[0]);
         buildStream(response);
       });
+
+
   }
 
+  function filterOnlineChannelsUp() {
+    profiles.sort(function(channel) {
+      if (channel.mature) {
+        return -1;
+      } else {
+        return 1;
+      }
+    });
+  }
+
+  function displayResults() {
+    // filter
+    filterOnlineChannelsUp();
+
+
+    profiles.forEach(function(channel) {
+      buildStream(channel);
+    });
+
+  }
 
 
 }); // End of document.ready
