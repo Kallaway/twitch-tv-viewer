@@ -101,10 +101,9 @@ a {
   margin: 5% 0;
   max-width: 50px;
   font-size: 1em;
-}
-
-.filter-buttons {
-
+  cursor: pointer;
+  background-color: $main-text-color;
+  color: $app-color;
 }
 
 #app-container input {
@@ -140,13 +139,10 @@ a {
   // align-items: center;
   justify-content: space-around;
   flex-direction: row;
-  // flex-basis: 1;
-  // flex: 3;
 }
 
 .filter-button {
   // flex-basis: 1;
-  flex-grow: 1;
 }
 
 .filter-button {
@@ -156,7 +152,6 @@ a {
 #results-line {
   width: 50%;
   background-color: red;
-
   display: block;
   height: 1px;
   border: 3;
@@ -170,7 +165,6 @@ a {
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
-
   // border-radius: 5%;
 }
 
@@ -186,10 +180,6 @@ a {
   min-width: 600px;
   // padding: 25px auto;
 }
-
-// .stream-block children { // not working
-//   flex-basis: 20%;
-// }
 
 .stream-block img,
 .stream-block p {

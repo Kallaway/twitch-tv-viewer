@@ -35,8 +35,6 @@ function buildStream(streamInfo) {
   }
 
     console.log(streamInfo);
-    // let block = $('<div>');
-    // block.addClass('stream-block');
 
     /* EXAMPLE
     {
@@ -93,14 +91,34 @@ function buildStream(streamInfo) {
       statusOnOff = "offline";
     }
 
-    // Improve this code. // first create then animate show 
+
+    /*
+    let divEntry = $('<a href="' +  channelUrl + '" target="_blank"><div class="stream-block"><img src="' + thumbnailUrl + '" class="channel-logo"/><p>' + name + '</p><p>' + status + '</p></div></a>')
+            // .attr({'class': 'stream-block' })
+            .children().css('background-color', statusColor)
+            .addClass(statusOnOff);
+    */
+
+    // let divEntry = $('<div class="stream-block"><img src="' + thumbnailUrl + '" class="channel-logo"/><p>' + name + '</p><p>' + status + '</p></div></a>')
+    //         // .attr({'class': 'stream-block' })
+    //         .children().css('background-color', statusColor)
+    //         .addClass(statusOnOff);
+    //
+    //
+    // let wrapLinkAroundEntry = $('<a href="' +  channelUrl + '" target="_blank"></a>');
+
+    // wrapLinkAroundEntry.wrap(divEntry);
+    // Improve this code. // first create then animate show
     $results.append($('<a href="' +  channelUrl + '" target="_blank"><div class="stream-block"><img src="' + thumbnailUrl + '" class="channel-logo"/><p>' + name + '</p><p>' + status + '</p></div></a>')
             // .attr({'class': 'stream-block' })
             .children().css('background-color', statusColor)
             .addClass(statusOnOff)
+            // .wrapInner($('<a href="' +  channelUrl + '" target="_blank"></a>'))
           );
 
     console.log($results);
+
+
 
 }
 
@@ -128,12 +146,7 @@ $(document).ready(function() {
           displayResults();
         }
       }); // End of getJSON
-  })
-  // .success(function() {
-  //
-  // });
-
-
+  });
 
   // Make sure it only does it after the results came back
   // console.log("code makes it here");
@@ -227,6 +240,9 @@ $(document).ready(function() {
 
     profiles.forEach(function(channel) {
       buildStream(channel);
+      // channel.on('click', function() {
+      //   // go to the site?
+      // });
     });
 
   }
