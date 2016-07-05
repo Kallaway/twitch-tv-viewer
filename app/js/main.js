@@ -2,7 +2,7 @@
 
 // TODO: Modes: All, Online, Offline
 // TODO: On smaller screens, the status should either become invisible or be moved down
-// TODO: Filter new people to the top??? 
+// TODO: Filter new people to the top???
 // TODO: Some sort of a line break between results and controls
 // TODO: If search is done with an empty string, don't do anything
 
@@ -232,7 +232,7 @@ $(document).ready(function() {
 
 
         // maybe remove all the previous results
-        removePreviousResults();
+        // removePreviousResults(); // change
         displayResults();
         //
         // console.log("Profiles: " + profiles);
