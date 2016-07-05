@@ -76,13 +76,17 @@ a {
   // align-items: center;
   // margin: 0 auto;
 
+}
 
+
+.search-block {
+  background-color: $offline-bg;
 }
 
 #app-container div {
-  background-color: $offline-bg;
+  // background-color: $offline-bg;
   // min-width: 600px; /* maybe move this to .stream-block */
-  color: $main-text-color;
+  // color: $main-text-color;
   text-align: center;
 
 }
@@ -94,7 +98,8 @@ a {
   justify-content: space-around; // check
   align-items: center;
   color: $main-text-color;
-  background-color: $app-color;
+  // background-color: $app-color;
+  background-color: $offline-bg;
 }
 
 #search-button {
@@ -102,8 +107,14 @@ a {
   max-width: 50px;
   font-size: 1em;
   cursor: pointer;
-  background-color: $main-text-color;
-  color: $app-color;
+  background-color: $app-color;
+  color: $main-text-color;
+  border-radius: 15px;
+  padding: 2% 5%;
+}
+
+#search-button:hover {
+  color: $offline-bg;
 }
 
 #app-container input {
@@ -116,6 +127,7 @@ a {
   text-align: center;
   outline: none;
   border: none;
+  padding: 1% 3%;
 }
 
 #app-container input::-webkit-input-placeholder {
@@ -124,13 +136,13 @@ a {
 
 #state-indicator {
   // background-color: $app-color;
-  background-color: $alt-app-color;
+  background-color: $offline-bg;
+  // background-color: $alt-app-color;
   display: flex;
   justify-content: center;
   padding: 5% 0;
   font-size: 2em;
   color: $app-color; // why doesn't this work
-
 }
 
 .filter-buttons {
@@ -142,7 +154,12 @@ a {
 }
 
 .filter-button {
-  // flex-basis: 1;
+  flex-grow: 1;
+  margin: 0 50%;
+}
+
+.active-state {
+  background-color: $app-color;
 }
 
 .filter-button {

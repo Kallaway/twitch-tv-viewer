@@ -54,9 +54,10 @@ a {
   align-items: center;
   flex-direction: column; }
 
+.search-block {
+  background-color: #083358; }
+
 #app-container div {
-  background-color: #083358;
-  color: #e3e3e3;
   text-align: center; }
 
 .search-block {
@@ -66,15 +67,20 @@ a {
   justify-content: space-around;
   align-items: center;
   color: #e3e3e3;
-  background-color: #0DA574; }
+  background-color: #083358; }
 
 #search-button {
   margin: 5% 0;
   max-width: 50px;
   font-size: 1em;
   cursor: pointer;
-  background-color: #e3e3e3;
-  color: #0DA574; }
+  background-color: #0DA574;
+  color: #e3e3e3;
+  border-radius: 15px;
+  padding: 2% 5%; }
+
+#search-button:hover {
+  color: #083358; }
 
 #app-container input {
   background-color: #e3e3e3;
@@ -85,13 +91,14 @@ a {
   font-size: 1.2em;
   text-align: center;
   outline: none;
-  border: none; }
+  border: none;
+  padding: 1% 3%; }
 
 #app-container input::-webkit-input-placeholder {
   color: #0DA574; }
 
 #state-indicator {
-  background-color: #0DA574;
+  background-color: #083358;
   display: flex;
   justify-content: center;
   padding: 5% 0;
@@ -103,6 +110,13 @@ a {
   display: flex;
   justify-content: space-around;
   flex-direction: row; }
+
+.filter-button {
+  flex-grow: 1;
+  margin: 0 50%; }
+
+.active-state {
+  background-color: #0DA574; }
 
 .filter-button {
   cursor: pointer; }

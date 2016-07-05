@@ -2,9 +2,7 @@
 
 // TODO: Modes: All, Online, Offline
 // TODO: On smaller screens, the status should either become invisible or be moved down
-// TODO: Color differently based on whether the account is online, offline, or deactivated
-// TODO: Filter online people to the top? on press of Online
-// TODO: Filter new people to the top?
+// TODO: Filter new people to the top??? 
 // TODO: Some sort of a line break between results and controls
 // TODO: If search is done with an empty string, don't do anything
 
@@ -109,6 +107,17 @@ function buildStream(streamInfo) {
 
     // wrapLinkAroundEntry.wrap(divEntry);
     // Improve this code. // first create then animate show
+
+
+    let imgElement = $('<img src="' + thumbnailUrl + '" class="channel-logo"/>');
+    let nameElement = $('<p>' + name + '</p>');
+    let statusElement = $('<p>' + status + '</p>');
+
+
+
+
+    // ORIGINAL
+
     $results.append($('<a href="' +  channelUrl + '" target="_blank"><div class="stream-block"><img src="' + thumbnailUrl + '" class="channel-logo"/><p>' + name + '</p><p>' + status + '</p></div></a>')
             // .attr({'class': 'stream-block' })
             .children().css('background-color', statusColor)
@@ -117,9 +126,6 @@ function buildStream(streamInfo) {
           );
 
     console.log($results);
-
-
-
 }
 
 let streamElements = [],
@@ -169,10 +175,15 @@ $(document).ready(function() {
   // Filter Buttons
 
   $showAll.on('click', function() {
+    $('.filter-button').removeClass('active-state');
+    $(this).addClass('active-state');
+
     $('#results div').slideDown(300); // but show them one by one maybe?
   });
 
   $showOnline.on('click', function() {
+    $('.filter-button').removeClass('active-state');
+    $(this).addClass('active-state');
     // experiment
     // $('#results div').hide();
     $('#results div').each(function() {
@@ -185,6 +196,9 @@ $(document).ready(function() {
   });
 
   $showOffline.on('click', function() {
+    $('.filter-button').removeClass('active-state');
+    $(this).addClass('active-state');
+
     $('#results div').each(function() {
       if ($(this).hasClass('offline')) {
         $(this).slideDown(300);
@@ -215,12 +229,16 @@ $(document).ready(function() {
 
       }).success(function(response) {
         profiles.shift(response);
-        console.log("Profiles: " + profiles);
-        //console.log(profiles[0]);
-        buildStream(response);
+
+
+        // maybe remove all the previous results
+        removePreviousResults();
+        displayResults();
+        //
+        // console.log("Profiles: " + profiles);
+        // //console.log(profiles[0]);
+        // buildStream(response);
       });
-
-
   }
 
   function filterOnlineChannelsUp() {
@@ -237,7 +255,6 @@ $(document).ready(function() {
     // filter
     filterOnlineChannelsUp();
 
-
     profiles.forEach(function(channel) {
       buildStream(channel);
       // channel.on('click', function() {
@@ -245,6 +262,10 @@ $(document).ready(function() {
       // });
     });
 
+  }
+
+  function removePreviousResults() { // ?
+    $('.stream-block').remove();
   }
 
 
