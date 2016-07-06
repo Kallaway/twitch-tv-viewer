@@ -1,10 +1,10 @@
 'use strict';
 
-// TODO: Modes: All, Online, Offline
 // TODO: On smaller screens, the status should either become invisible or be moved down
 // TODO: Filter new people to the top???
 // TODO: Some sort of a line break between results and controls
 // TODO: If search is done with an empty string, don't do anything
+// TODO: Make it impossible to add spaces to the search string
 
 // maybe use a Promise instead?
 let channels = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "comster404"],
@@ -27,10 +27,16 @@ function reqListener() {
 function buildStream(streamInfo) {
   // arr.forEach(function(streamInfo){
 
-  if (streamInfo.status == 422) {
-    // This means that the channel no longer exists. // closed
-    return; // change this or remove
+  switch (streamInfo.status) {
+    case 422:
+    case 404:
+      return;
   }
+
+  // if (streamInfo.status == 422) {
+  //   // This means that the channel no longer exists. // closed
+  //   return; // change this or remove
+  // }
 
     console.log(streamInfo);
 
@@ -108,13 +114,9 @@ function buildStream(streamInfo) {
     // wrapLinkAroundEntry.wrap(divEntry);
     // Improve this code. // first create then animate show
 
-
     let imgElement = $('<img src="' + thumbnailUrl + '" class="channel-logo"/>');
     let nameElement = $('<p>' + name + '</p>');
     let statusElement = $('<p>' + status + '</p>');
-
-
-
 
     // ORIGINAL
 
@@ -211,15 +213,34 @@ $(document).ready(function() {
   $searchButton.on('click', searchDisplayChannel);
 
   $searchInput.keypress(function(ev) {
+
+    switch (ev.which) {
+      case 13:
+        searchDisplayChannel();
+
+        /*
+      case 32:
+        let inputStr = $searchInput.val();
+        let inputChars = inputStr.split("");
+        inputChars.pop();
+        inputChars.join("");
+
+        $searchInput.val(inputChars);
+      */
+
+      default:
+    }
+
+
     if (ev.which == 13) {
       searchDisplayChannel();
       // reorder the results. OR
     }
   });
 
+
   function searchDisplayChannel() {
     let searchChannel = $searchInput.val();
-
     console.log("Searching for the following channel:" + searchChannel);
 
     // this should be a separate function;
@@ -230,10 +251,20 @@ $(document).ready(function() {
       }).success(function(response) {
         profiles.shift(response);
 
-
+        /*
         // maybe remove all the previous results
-        // removePreviousResults(); // change
-        displayResults();
+        removePreviousResults(); // change
+
+        profiles.forEach(function(channel) {
+          buildStream(channel);
+          // channel.on('click', function() {
+          //   // go to the site?
+          // });
+        });
+        */
+
+
+        // displayResults();
         //
         // console.log("Profiles: " + profiles);
         // //console.log(profiles[0]);
@@ -267,7 +298,6 @@ $(document).ready(function() {
   function removePreviousResults() { // ?
     $('.stream-block').remove();
   }
-
 
 }); // End of document.ready
 
