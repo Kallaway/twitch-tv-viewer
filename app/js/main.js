@@ -5,6 +5,7 @@
 // TODO: Some sort of a line break between results and controls
 // TODO: If search is done with an empty string, don't do anything
 // TODO: Make it impossible to add spaces to the search string
+// TODO: Empty the input on lost focus
 
 // maybe use a Promise instead?
 let channels = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "comster404"],
@@ -238,6 +239,10 @@ $(document).ready(function() {
     }
   });
 
+  $searchInput.on("blur", function() {
+    $searchInput.val("");
+  });
+
 
   function searchDisplayChannel() {
     let searchChannel = $searchInput.val();
@@ -249,7 +254,25 @@ $(document).ready(function() {
         console.log(data);
 
       }).success(function(response) {
-        profiles.shift(response);
+
+        console.log("*********");
+        console.log(profiles);
+
+        // if it already exists in the profiles array, don't add it in.
+        for (var i = 0; i < profiles.length; i++) {
+          console.log("$$$ " + profiles[i].name);
+          console.log("$$$" + response);
+          if (profiles.name == response) {
+            return;
+          }
+        }
+
+        profiles.push(response); // shift(response);
+
+        console.log("*********");
+        console.log(profiles);
+        removePreviousResults();
+        displayResults();
 
         /*
         // maybe remove all the previous results
