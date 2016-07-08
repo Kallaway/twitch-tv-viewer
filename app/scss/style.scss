@@ -32,13 +32,9 @@ Alt Color Scheme
 
 */
 /******** BASE STYLES *******/
-
-
 // testing
 $online-bg: #0DA574;
-$offline-bg: #083358;
-//
-
+$offline-bg: #083358; //
 $link-color: #FEE785;
 $bg-color: #001F3F;
 $app-color: #0DA574;
@@ -47,190 +43,156 @@ $main-text-color: #e3e3e3;
 $font-stack: 'Source Sans Pro', Helvetica, sans-serif; // Example
 $test-color: #ddd;
 $main-font-size: 1.2em;
-
 body {
-  background-color: $bg-color;
-  // color: $main-text-color;
-  color: $test-color;
-  font-size: $main-font-size;
-  display:flex;
-  justify-content: center;
-  font-family: $font-stack;
+    background-color: $bg-color;
+    // color: $main-text-color;
+    color: $test-color;
+    font-size: $main-font-size;
+    display: flex;
+    justify-content: center;
+    font-family: $font-stack;
 }
-
 a {
-  color: $link-color;
-  text-decoration: none;
+    color: $link-color;
+    text-decoration: none;
 }
-
-
 /******** MAIN STYLES *******/
-
 #app-container {
-  background-color: $offline-bg;
-  width: 600px; /* used to be 80% */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  // align-items: center;
-  // margin: 0 auto;
-  margin-bottom: 5%;
+    background-color: $offline-bg;
+    width: 600px;
+    /* used to be 80% */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    // align-items: center;
+    // margin: 0 auto;
+    margin-bottom: 5%;
 }
-
 .search-block {
-  background-color: $offline-bg;
+    background-color: $offline-bg;
 }
-
 #app-container div {
-  // background-color: $offline-bg;
-  // min-width: 600px; /* maybe move this to .stream-block */
-  // color: $main-text-color;
-  text-align: center;
-
+    // background-color: $offline-bg;
+    // min-width: 600px; /* maybe move this to .stream-block */
+    // color: $main-text-color;
+    text-align: center;
 }
-
 .search-block {
-  margin: 2% 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around; // check
-  align-items: center;
-  color: $main-text-color;
-  // background-color: $app-color;
-  background-color: $offline-bg;
+    margin: 2% 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; // check
+    align-items: center;
+    color: $main-text-color;
+    // background-color: $app-color;
+    background-color: $offline-bg;
 }
-
 #search-button {
-  margin: 5% 0;
-  max-width: 50px;
-  font-size: 1em;
-  cursor: pointer;
-  background-color: $app-color;
-  color: $main-text-color;
-  border-radius: 15px;
-  padding: 2% 5%;
+    margin: 5% 0;
+    max-width: 50px;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: $app-color;
+    color: $main-text-color;
+    border-radius: 15px;
+    padding: 2% 5%;
 }
-
 #search-button:hover {
-  color: $offline-bg;
+    color: $offline-bg;
 }
-
 #search-box {
-  background-color: $main-text-color;
-  color: $app-color;
-  margin: 0 auto;
-  /* round corners */
-  border-radius: 20px;
-  font-size: 1.2em;
-  text-align: center;
-  outline: none;
-  border: none;
-  padding: 2% 3%;
+    background-color: $main-text-color;
+    color: $app-color;
+    margin: 0 auto;
+    /* round corners */
+    border-radius: 20px;
+    font-size: 1.2em;
+    text-align: center;
+    outline: none;
+    border: none;
+    padding: 2% 3%;
 }
-
 #app-container input::-webkit-input-placeholder {
-  color: $app-color;
+    color: $app-color;
 }
-
 #state-indicator {
-  // background-color: $app-color;
-  background-color: $offline-bg;
-  // background-color: $alt-app-color;
-  display: flex;
-  justify-content: center;
-  padding: 5% 0;
-  font-size: 2em;
-  color: $app-color; // why doesn't this work
+    // background-color: $app-color;
+    background-color: $offline-bg;
+    // background-color: $alt-app-color;
+    display: flex;
+    justify-content: center;
+    padding: 5% 0;
+    font-size: 2em;
+    color: $app-color; // why doesn't this work
 }
-
 .filter-buttons {
-  background-color: $alt-app-color;
-  display: flex;
-  // align-items: center;
-  justify-content: space-between;
-  flex-direction: row;
+    background-color: $alt-app-color;
+    display: flex;
+    // align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
 }
-
 .filter-button {
-  background-color: $offline-bg;
-  flex: 1;
-  width: auto;
-  padding: 0 10px;
-  // margin: 0 50%;
+    background-color: $offline-bg;
+    flex: 1;
+    width: auto;
+    padding: 0 10px;
+    // margin: 0 50%;
 }
-
-.active-state {
-  background-color: $app-color;
+.highlighted {
+    background-color: $app-color;
 }
-
 .filter-button {
-  cursor: pointer;
+    cursor: pointer;
 }
-
 #results-line {
-  width: 60%;
-  background-color: $app-color;
-  display: block;
-  height: 5px;
-  border: 3;
-  border-radius: 5px;
-  border-top: 1px solid;
-  border-color: $offline-bg;
-  // margin: 1em 0;
-  // padding: 0;
+    width: 60%;
+    background-color: $app-color;
+    display: block;
+    height: 5px;
+    border: 3;
+    border-radius: 5px;
+    border-top: 1px solid;
+    border-color: $offline-bg;
+    // margin: 1em 0;
+    // padding: 0;
 }
-
 #results {
-  background-color: $app-color;
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
-  // border-radius: 5%;
+    background-color: $app-color;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    // border-radius: 5%;
 }
-
 /* created using jQuery */
-
 .stream-block {
-  display:flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  color: $main-text-color;
-  padding: 5px 0px;
-  min-width: 600px;
-  // padding: 25px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    color: $main-text-color;
+    padding: 5px 0;
+    min-width: 600px;
+    // padding: 25px auto;
 }
-
 .stream-block img,
 .stream-block p {
-  display: flex;
+    display: flex;
 }
-
 .channel-logo {
-  height: 75px;
-  width: 75px;
-  border-radius: 50%;
-  border: 2px solid $bg-color;
-  margin: 0 25px;
-  // width: %;
+    height: 75px;
+    width: 75px;
+    border-radius: 50%;
+    border: 2px solid $bg-color;
+    margin: 0 25px;
+    // width: %;
 }
-
 .stream-block p {
-  margin: 0 30px;
-  width: 30%;
+    margin: 0 30px;
+    width: 30%;
 }
-
 .online {
-  background-color: $app-color;
+    background-color: $app-color;
 }
-
-
-
-
-
-
-
-
-
 /******** PSEUDO STYLES *******/

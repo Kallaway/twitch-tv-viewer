@@ -118,7 +118,7 @@ a {
   width: auto;
   padding: 0 10px; }
 
-.active-state {
+.highlighted {
   background-color: #0DA574; }
 
 .filter-button {
@@ -147,7 +147,7 @@ a {
   justify-content: flex-start;
   align-items: center;
   color: #e3e3e3;
-  padding: 5px 0px;
+  padding: 5px 0;
   min-width: 600px; }
 
 .stream-block img,

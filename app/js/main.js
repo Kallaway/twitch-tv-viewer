@@ -6,6 +6,7 @@
 // TODO: If search is done with an empty string, don't do anything
 // TODO: Make it impossible to add spaces to the search string
 // TODO: Empty the input on lost focus
+// TODO: Maybe add a circle that displays if the channel is online or offline? Or maybe just display status for all - even for offline
 
 // maybe use a Promise instead?
 let channels = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "comster404"],
@@ -15,10 +16,6 @@ let channels = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck"
     profiles,
     $results = $('#results');
 
-function collectChannelInfo() {
-
-}
-
 function reqListener() {
   console.log(this.responseText);
   a_channelInfo.push(responseText);
@@ -27,7 +24,6 @@ function reqListener() {
 // Ref: https://api.twitch.tv/kraken/streams?game=StarCraft+II%3A+Heart+of+the+Swarm&channel=test_channel,test_channel2
 function buildStream(streamInfo) {
   // arr.forEach(function(streamInfo){
-
   switch (streamInfo.status) {
     case 422:
     case 404:
@@ -41,44 +37,6 @@ function buildStream(streamInfo) {
 
     console.log(streamInfo);
 
-    /* EXAMPLE
-    {
-      mature: false,
-      status: "@dogwaddle working on Pomodoro Timer #Programming #LearningJavaScript ",
-      broadcaster_language: "en",
-      display_name: "FreeCodeCamp",
-      game: "Creative",
-      language: "en",
-      _id: 79776140,
-      name: "freecodecamp",
-      created_at: "2015-01-14T03:36:47Z",
-      updated_at: "2016-06-29T05:30:53Z",
-      delay: null,
-      logo: "https://static-cdn.jtvnw.net/jtv_user_pictures/freecodecamp-profile_image-d9514f2df0962329-300x300.png",
-      banner: null,
-      video_banner: "https://static-cdn.jtvnw.net/jtv_user_pictures/freecodecamp-channel_offline_image-b8e133c78cd51cb0-1920x1080.png",
-      background: null,
-      profile_banner: "https://static-cdn.jtvnw.net/jtv_user_pictures/freecodecamp-profile_banner-6f5e3445ff474aec-480.png",
-      profile_banner_background_color: null,
-      partner: false,
-      url: "https://www.twitch.tv/freecodecamp",
-      views: 153967,
-      followers: 9781,
-      _links: {
-        self: "https://api.twitch.tv/kraken/channels/freecodecamp",
-        follows: "https://api.twitch.tv/kraken/channels/freecodecamp/follows",
-        commercial: "https://api.twitch.tv/kraken/channels/freecodecamp/commercial",
-        stream_key: "https://api.twitch.tv/kraken/channels/freecodecamp/stream_key",
-        chat: "https://api.twitch.tv/kraken/chat/freecodecamp",
-        features: "https://api.twitch.tv/kraken/channels/freecodecamp/features",
-        subscriptions: "https://api.twitch.tv/kraken/channels/freecodecamp/subscriptions",
-        editors: "https://api.twitch.tv/kraken/channels/freecodecamp/editors",
-        teams: "https://api.twitch.tv/kraken/channels/freecodecamp/teams",
-        videos: "https://api.twitch.tv/kraken/channels/freecodecamp/videos"
-      }
-    }
-    */
-
     let thumbnailUrl = streamInfo.logo,
         channelUrl = streamInfo.url,
         name = streamInfo.display_name,
@@ -91,43 +49,31 @@ function buildStream(streamInfo) {
       statusColor = '#0DA574';
       statusOnOff = "online";
     } else {
-      status = 'Channel Offline'; // add a case for a channel that is no longer active.
+      status = streamInfo.status; // status = 'Channel Offline'; // add a case for a channel that is no longer active.
       statusColor = '#083358';
       statusOnOff = "offline";
     }
 
-
-    /*
-    let divEntry = $('<a href="' +  channelUrl + '" target="_blank"><div class="stream-block"><img src="' + thumbnailUrl + '" class="channel-logo"/><p>' + name + '</p><p>' + status + '</p></div></a>')
-            // .attr({'class': 'stream-block' })
-            .children().css('background-color', statusColor)
-            .addClass(statusOnOff);
-    */
-
-    // let divEntry = $('<div class="stream-block"><img src="' + thumbnailUrl + '" class="channel-logo"/><p>' + name + '</p><p>' + status + '</p></div></a>')
-    //         // .attr({'class': 'stream-block' })
-    //         .children().css('background-color', statusColor)
-    //         .addClass(statusOnOff);
-    //
-    //
     // let wrapLinkAroundEntry = $('<a href="' +  channelUrl + '" target="_blank"></a>');
 
     // wrapLinkAroundEntry.wrap(divEntry);
     // Improve this code. // first create then animate show
+    let $block = $('<div class="stream-block"></div>');
+    let $anchorEl = $('<a href="' + channelUrl + '></a>');
+    let $imgEl = $('<img src="' + thumbnailUrl + '" class="channel-logo"/>');
+    let $nameEl = $('<p>' + name + '</p>');
+    let $statusEl = $('<p>' + status + '</p>');
 
-    let imgElement = $('<img src="' + thumbnailUrl + '" class="channel-logo"/>');
-    let nameElement = $('<p>' + name + '</p>');
-    let statusElement = $('<p>' + status + '</p>');
+    // $anchorEl.append([$imgEl, $nameEl, $statusEl]);
+
+    $block.append([$imgEl, $nameEl, $statusEl]).css('background-color', statusColor).addClass(statusOnOff).data('link', thumbnailUrl); // .css('background-color', statusColor).addClass(statusOnOff);
+
+    // $anchorEl.append($block) .css('background-color', statusColor).addClass(statusOnOff);
+
+    $results.append($block);
+
 
     // ORIGINAL
-
-    $results.append($('<a href="' +  channelUrl + '" target="_blank"><div class="stream-block"><img src="' + thumbnailUrl + '" class="channel-logo"/><p>' + name + '</p><p>' + status + '</p></div></a>')
-            // .attr({'class': 'stream-block' })
-            .children().css('background-color', statusColor)
-            .addClass(statusOnOff)
-            // .wrapInner($('<a href="' +  channelUrl + '" target="_blank"></a>'))
-          );
-
     console.log($results);
 }
 
@@ -178,15 +124,15 @@ $(document).ready(function() {
   // Filter Buttons
 
   $showAll.on('click', function() {
-    $('.filter-button').removeClass('active-state');
-    $(this).addClass('active-state');
+    $('.highlighted').removeClass('highlighted');
+    $(this).addClass('highlighted');
 
     $('#results div').slideDown(300); // but show them one by one maybe?
   });
 
   $showOnline.on('click', function() {
-    $('.filter-button').removeClass('active-state');
-    $(this).addClass('active-state');
+    $('.highlighted').removeClass('highlighted'); // test this
+    $(this).addClass('highlighted');
     // experiment
     // $('#results div').hide();
     $('#results div').each(function() {
@@ -199,8 +145,8 @@ $(document).ready(function() {
   });
 
   $showOffline.on('click', function() {
-    $('.filter-button').removeClass('active-state');
-    $(this).addClass('active-state');
+    $('.filter-button').removeClass('highlighted');
+    $(this).addClass('highlighted');
 
     $('#results div').each(function() {
       if ($(this).hasClass('offline')) {
