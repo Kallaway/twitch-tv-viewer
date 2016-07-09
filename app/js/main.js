@@ -5,8 +5,6 @@
 // TODO: Some sort of a line break between results and controls
 // TODO: If search is done with an empty string, don't do anything
 // TODO: Make it impossible to add spaces to the search string
-// TODO: Empty the input on lost focus
-// TODO: Maybe add a circle that displays if the channel is online or offline? Or maybe just display status for all - even for offline
 
 // maybe use a Promise instead?
 let channels = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "comster404"],
@@ -14,19 +12,21 @@ let channels = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck"
     baseURL = 'https://api.twitch.tv/kraken/channels/',
     endURL = '?callback=?',
     profiles,
-    $results = $('#results');
+    $results = $('#results'),
+    $noSuchChannel = $('#no-such-channel');
 
 function reqListener() {
   console.log(this.responseText);
   a_channelInfo.push(responseText);
 }
 
-// Ref: https://api.twitch.tv/kraken/streams?game=StarCraft+II%3A+Heart+of+the+Swarm&channel=test_channel,test_channel2
 function buildStream(streamInfo) {
   // arr.forEach(function(streamInfo){
   switch (streamInfo.status) {
     case 422:
+      return;
     case 404:
+      //$noSuchChannel.slideDown(300);
       return;
   }
 
@@ -54,24 +54,15 @@ function buildStream(streamInfo) {
       statusOnOff = "offline";
     }
 
-    // let wrapLinkAroundEntry = $('<a href="' +  channelUrl + '" target="_blank"></a>');
+    let $block = $('<div class="stream-block"></div>'),
+    $anchorEl = $('<a href="' + channelUrl + '" target="_blank"></a>'),
+    $imgEl = $('<img src="' + thumbnailUrl + '" class="channel-logo"/>'),
+    $nameEl = $('<p>' + name + '</p>'),
+    $statusEl = $('<p>' + status + '</p>');
 
-    // wrapLinkAroundEntry.wrap(divEntry);
-    // Improve this code. // first create then animate show
-    let $block = $('<div class="stream-block"></div>');
-    let $anchorEl = $('<a href="' + channelUrl + '></a>');
-    let $imgEl = $('<img src="' + thumbnailUrl + '" class="channel-logo"/>');
-    let $nameEl = $('<p>' + name + '</p>');
-    let $statusEl = $('<p>' + status + '</p>');
-
-    // $anchorEl.append([$imgEl, $nameEl, $statusEl]);
-
-    $block.append([$imgEl, $nameEl, $statusEl]).css('background-color', statusColor).addClass(statusOnOff).data('link', thumbnailUrl); // .css('background-color', statusColor).addClass(statusOnOff);
-
-    // $anchorEl.append($block) .css('background-color', statusColor).addClass(statusOnOff);
-
+    $anchorEl.append([$imgEl, $nameEl, $statusEl]).addClass("block-anchor"); // .css('background-color',;
+    $block.append($anchorEl).css('background-color', statusColor).addClass(statusOnOff).data('link', thumbnailUrl);
     $results.append($block);
-
 
     // ORIGINAL
     console.log($results);
@@ -81,8 +72,6 @@ let streamElements = [],
     callURL;
 
 $(document).ready(function() {
-  // create tabs
-
   var profiles = [];
 
   channels.forEach(function(channel) {
@@ -198,9 +187,7 @@ $(document).ready(function() {
     callURL = baseURL + searchChannel + endURL;
     $.getJSON(callURL, function(data) {
         console.log(data);
-
       }).success(function(response) {
-
         console.log("*********");
         console.log(profiles);
 

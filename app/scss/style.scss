@@ -78,6 +78,9 @@ a {
     // color: $main-text-color;
     text-align: center;
 }
+#no-such-channel {
+  display: none;
+}
 .search-block {
     margin: 2% 0;
     display: flex;
@@ -132,12 +135,16 @@ a {
     // align-items: center;
     justify-content: space-between;
     flex-direction: row;
+    width: 100%;
+    // padding-top: 5px;
+    // padding-bottom: 5px;
+    // padding: 0 10px;
 }
 .filter-button {
     background-color: $offline-bg;
     flex: 1;
     width: auto;
-    padding: 0 10px;
+    padding: 5px 10px;
     // margin: 0 50%;
 }
 .highlighted {
@@ -172,13 +179,19 @@ a {
     justify-content: flex-start;
     align-items: center;
     color: $main-text-color;
-    padding: 5px 0;
-    min-width: 600px;
-    // padding: 25px auto;
 }
 .stream-block img,
 .stream-block p {
     display: flex;
+}
+.block-anchor {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 5px 0;
+  min-width: 600px;
+  text-align: center;
 }
 .channel-logo {
     height: 75px;
