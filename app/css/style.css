@@ -150,7 +150,9 @@ a {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  color: #e3e3e3; }
+  color: #e3e3e3;
+  border-bottom: 2px #001F3F;
+  border-top: 2px #001F3F; }
 
 .stream-block img,
 .stream-block p {

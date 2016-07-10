@@ -179,6 +179,8 @@ a {
     justify-content: flex-start;
     align-items: center;
     color: $main-text-color;
+    border-bottom: 2px $bg-color;
+    border-top: 2px $bg-color;
 }
 .stream-block img,
 .stream-block p {

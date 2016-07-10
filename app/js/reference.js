@@ -1,5 +1,7 @@
 /*
 
+// For testing: ybicanoooobov BeyondTheSummit Dota2ruhub M1dwayTV OnisDota
+
 // Ref: https://api.twitch.tv/kraken/streams?game=StarCraft+II%3A+Heart+of+the+Swarm&channel=test_channel,test_channel2
 
 EXAMPLE

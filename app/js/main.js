@@ -24,16 +24,13 @@ function buildStream(streamInfo) {
   // arr.forEach(function(streamInfo){
   switch (streamInfo.status) {
     case 422:
+      $noSuchChannel.slideDown(300); // change it so it knows when the channels are being added from input
+      // This means that the channel no longer exists. // closed
       return;
     case 404:
-      //$noSuchChannel.slideDown(300);
+
       return;
   }
-
-  // if (streamInfo.status == 422) {
-  //   // This means that the channel no longer exists. // closed
-  //   return; // change this or remove
-  // }
 
     console.log(streamInfo);
 
@@ -68,6 +65,12 @@ function buildStream(streamInfo) {
     console.log($results);
 }
 
+let $showAll = $('#show-all'),
+    $showOnline = $('#show-online'),
+    $showOffline = $('#show-offline'),
+    $searchButton = $('#search-button'),
+    $searchInput = $('#search-box');
+
 let streamElements = [],
     callURL;
 
@@ -89,6 +92,9 @@ $(document).ready(function() {
         if (profiles.length == channels.length) {
           displayResults();
         }
+      }).error(function(e) {
+        console.log("Error is registered"); // check
+        $noSuchChannel.slideDown(300);
       }); // End of getJSON
   });
 
@@ -96,11 +102,8 @@ $(document).ready(function() {
   // console.log("code makes it here");
   // buildStreams(profiles);
 
-  let $showAll = $('#show-all'),
-      $showOnline = $('#show-online'),
-      $showOffline = $('#show-offline'),
-      $searchButton = $('#search-button'),
-      $searchInput = $('#search-box');
+
+      // $searchInput = $('input[name=search]');
 
   // Remove placeholder text on search input focus
   $searchInput.on('focus', function() {
@@ -174,17 +177,21 @@ $(document).ready(function() {
     }
   });
 
-  $searchInput.on("blur", function() {
-    $searchInput.val("");
-  });
+  // $searchInput.on("blur", function() {
+  //   $searchInput.val("");
+  // });
 
 
   function searchDisplayChannel() {
-    let searchChannel = $searchInput.val();
+    // 'search'
+    // let $searchInput_updated = $('#search-box');
+    $('#search-box').addClass('highlighted');
+    let searchChannel = $('#search-box').val();
     console.log("Searching for the following channel:" + searchChannel);
 
     // this should be a separate function;
     callURL = baseURL + searchChannel + endURL;
+    console.log("When adding a channel to the list, the url is: " + callURL);
     $.getJSON(callURL, function(data) {
         console.log(data);
       }).success(function(response) {
@@ -226,6 +233,9 @@ $(document).ready(function() {
         // //console.log(profiles[0]);
         // buildStream(response);
       });
+
+      // bring back the val
+      $searchInput.val("");
   }
 
   function filterOnlineChannelsUp() {
