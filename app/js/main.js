@@ -5,6 +5,8 @@
 // TODO: Some sort of a line break between results and controls
 // TODO: If search is done with an empty string, don't do anything
 // TODO: Make it impossible to add spaces to the search string
+// #EA5455
+// #343434
 
 // maybe use a Promise instead?
 let channels = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "comster404"],
@@ -13,7 +15,8 @@ let channels = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck"
     endURL = '?callback=?',
     profiles,
     $results = $('#results'),
-    $noSuchChannel = $('#no-such-channel');
+    $noSuchChannel = $('#no-such-channel'),
+    areMainChannelsLoaded = false;
 
 function reqListener() {
   console.log(this.responseText);
@@ -24,8 +27,11 @@ function buildStream(streamInfo) {
   // arr.forEach(function(streamInfo){
   switch (streamInfo.status) {
     case 422:
-      $noSuchChannel.slideDown(300); // change it so it knows when the channels are being added from input
-      // This means that the channel no longer exists. // closed
+      if (areMainChannelsLoaded) {
+        $noSuchChannel.slideDown(300); // change it so it knows when the channels are being added from input
+        // This means that the channel no longer exists. // closed
+      }
+
       return;
     case 404:
 
@@ -43,11 +49,11 @@ function buildStream(streamInfo) {
 
     if (streamInfo.mature) {
       status = streamInfo.status;
-      statusColor = '#0DA574';
+      statusColor = '#FDE9C9';
       statusOnOff = "online";
     } else {
       status = streamInfo.status; // status = 'Channel Offline'; // add a case for a channel that is no longer active.
-      statusColor = '#083358';
+      statusColor = '#2D4059';
       statusOnOff = "offline";
     }
 
@@ -85,17 +91,18 @@ $(document).ready(function() {
     //
     $.getJSON(callURL, function(data) {
         console.log(data);
-
       }).success(function(response) {
         profiles.push(response);
-
         if (profiles.length == channels.length) {
           displayResults();
+          areMainChannelsLoaded = true;
         }
-      }).error(function(e) {
-        console.log("Error is registered"); // check
-        $noSuchChannel.slideDown(300);
-      }); // End of getJSON
+        // areMainChannelsLoaded = true;
+      });
+      // .error(function(e) {
+      //   console.log("Error is registered"); // check
+      //   $noSuchChannel.slideDown(300);
+      // }); // End of getJSON
   });
 
   // Make sure it only does it after the results came back
@@ -107,6 +114,7 @@ $(document).ready(function() {
 
   // Remove placeholder text on search input focus
   $searchInput.on('focus', function() {
+    $noSuchChannel.slideUp(300);
     $searchInput.data('placeholder', $(this).attr('placeholder'))
       .attr('placeholder', '');
   }).on('blur', function() {

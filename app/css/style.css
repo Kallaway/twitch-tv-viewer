@@ -29,24 +29,29 @@ Alt Color Scheme
 #FFD717
 #0DA574
 
+#343434
+#2D4059
+#EA5455
+#FDE9C9
+
 
 */
 /******** BASE STYLES *******/
 body {
-  background-color: #001F3F;
-  color: #ddd;
+  background-color: #343434;
+  color: #EA5455;
   font-size: 1.2em;
   display: flex;
   justify-content: center;
   font-family: "Source Sans Pro", Helvetica, sans-serif; }
 
 a {
-  color: #FEE785;
+  color: #EA5455;
   text-decoration: none; }
 
 /******** MAIN STYLES *******/
 #app-container {
-  background-color: #083358;
+  background-color: #2D4059;
   width: 600px;
   /* used to be 80% */
   display: flex;
@@ -56,13 +61,19 @@ a {
   margin-bottom: 5%; }
 
 .search-block {
-  background-color: #083358; }
+  background-color: #2D4059; }
 
 #app-container div {
   text-align: center; }
 
 #no-such-channel {
-  display: none; }
+  display: none;
+  color: #343434;
+  background-color: #EA5455;
+  padding-bottom: 1em;
+  padding-top: 1em;
+  width: 100%;
+  text-align: center; }
 
 .search-block {
   margin: 2% 0;
@@ -70,25 +81,25 @@ a {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  color: #e3e3e3;
-  background-color: #083358; }
+  color: #EA5455;
+  background-color: #2D4059; }
 
 #search-button {
   margin: 5% 0;
   max-width: 50px;
   font-size: 1em;
   cursor: pointer;
-  background-color: #0DA574;
-  color: #e3e3e3;
+  background-color: #FDE9C9;
+  color: #EA5455;
   border-radius: 15px;
   padding: 2% 5%; }
 
 #search-button:hover {
-  color: #083358; }
+  color: #2D4059; }
 
 #search-box {
-  background-color: #e3e3e3;
-  color: #0DA574;
+  background-color: #FDE9C9;
+  color: #EA5455;
   margin: 0 auto;
   /* round corners */
   border-radius: 20px;
@@ -99,47 +110,50 @@ a {
   padding: 2% 3%; }
 
 #app-container input::-webkit-input-placeholder {
-  color: #0DA574; }
+  color: #EA5455; }
 
 #state-indicator {
-  background-color: #083358;
+  background-color: #2D4059;
   display: flex;
   justify-content: center;
   padding: 5% 0;
   font-size: 2em;
-  color: #0DA574; }
+  color: #FDE9C9; }
 
 .filter-buttons {
-  background-color: #0DA574;
+  background-color: #FDE9C9;
   display: flex;
   justify-content: space-between;
   flex-direction: row;
   width: 100%; }
 
 .filter-button {
-  background-color: #083358;
+  background-color: #2D4059;
   flex: 1;
   width: auto;
   padding: 5px 10px; }
 
 .highlighted {
-  background-color: #0DA574; }
+  background-color: #FDE9C9; }
+
+.highlighted p {
+  color: #343434; }
 
 .filter-button {
   cursor: pointer; }
 
 #results-line {
   width: 60%;
-  background-color: #0DA574;
+  background-color: #FDE9C9;
   display: block;
   height: 5px;
   border: 3;
   border-radius: 5px;
   border-top: 1px solid;
-  border-color: #083358; }
+  border-color: #2D4059; }
 
 #results {
-  background-color: #0DA574;
+  background-color: #FDE9C9;
   display: flex;
   justify-content: flex-start;
   flex-direction: column; }
@@ -150,9 +164,9 @@ a {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  color: #e3e3e3;
-  border-bottom: 2px #001F3F;
-  border-top: 2px #001F3F; }
+  color: #EA5455;
+  border-bottom: 2px #343434;
+  border-top: 2px #343434; }
 
 .stream-block img,
 .stream-block p {
@@ -171,7 +185,7 @@ a {
   height: 75px;
   width: 75px;
   border-radius: 50%;
-  border: 2px solid #001F3F;
+  border: 2px solid #343434;
   margin: 0 25px; }
 
 .stream-block p {
@@ -179,6 +193,6 @@ a {
   width: 30%; }
 
 .online {
-  background-color: #0DA574; }
+  background-color: #FDE9C9; }
 
 /******** PSEUDO STYLES *******/

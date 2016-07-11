@@ -29,19 +29,25 @@ Alt Color Scheme
 #FFD717
 #0DA574
 
+#343434
+#2D4059
+#EA5455
+#FDE9C9
+
 
 */
 /******** BASE STYLES *******/
 // testing
-$online-bg: #0DA574;
-$offline-bg: #083358; //
-$link-color: #FEE785;
-$bg-color: #001F3F;
-$app-color: #0DA574;
-$alt-app-color: #0DA574;
-$main-text-color: #e3e3e3;
+$online-bg: #FDE9C9;
+$offline-bg: #2D4059; //
+$link-color: #EA5455;
+$highlight-font-color: #343434;
+$bg-color: #343434;
+$app-color: #FDE9C9;
+$alt-app-color: #FDE9C9;
+$main-text-color: #EA5455;
 $font-stack: 'Source Sans Pro', Helvetica, sans-serif; // Example
-$test-color: #ddd;
+$test-color: #EA5455;
 $main-font-size: 1.2em;
 body {
     background-color: $bg-color;
@@ -80,6 +86,12 @@ a {
 }
 #no-such-channel {
   display: none;
+  color: $bg-color;
+  background-color: $main-text-color;
+  padding-bottom: 1em;
+  padding-top: 1em;
+  width: 100%;
+  text-align: center;
 }
 .search-block {
     margin: 2% 0;
@@ -105,8 +117,8 @@ a {
     color: $offline-bg;
 }
 #search-box {
-    background-color: $main-text-color;
-    color: $app-color;
+    background-color: $app-color;
+    color: $main-text-color;
     margin: 0 auto;
     /* round corners */
     border-radius: 20px;
@@ -117,7 +129,8 @@ a {
     padding: 2% 3%;
 }
 #app-container input::-webkit-input-placeholder {
-    color: $app-color;
+    // color: $app-color;
+    color: $main-text-color;
 }
 #state-indicator {
     // background-color: $app-color;
@@ -149,6 +162,9 @@ a {
 }
 .highlighted {
     background-color: $app-color;
+}
+.highlighted p {
+    color: $highlight-font-color;
 }
 .filter-button {
     cursor: pointer;
