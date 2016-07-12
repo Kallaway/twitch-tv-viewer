@@ -1,7 +1,6 @@
 /*
 Color Scheme
 
-
 #0E1555
 #4E1184
 #932B77
@@ -125,7 +124,8 @@ a {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  width: 100%; }
+  width: 100%;
+  margin-bottom: 3px; }
 
 .filter-button {
   background-color: #2D4059;
@@ -153,7 +153,7 @@ a {
   border-color: #2D4059; }
 
 #results {
-  background-color: #FDE9C9;
+  background-color: #343434;
   display: flex;
   justify-content: flex-start;
   flex-direction: column; }
@@ -166,7 +166,9 @@ a {
   align-items: center;
   color: #EA5455;
   border-bottom: 2px #343434;
-  border-top: 2px #343434; }
+  border-top: 2px #343434;
+  margin-top: 3px;
+  margin-bottom: 3px; }
 
 .stream-block img,
 .stream-block p {
@@ -188,9 +190,10 @@ a {
   border: 2px solid #343434;
   margin: 0 25px; }
 
-.stream-block p {
+.block-anchor p {
   margin: 0 30px;
-  width: 30%; }
+  width: 30%;
+  text-align: left; }
 
 .online {
   background-color: #FDE9C9; }

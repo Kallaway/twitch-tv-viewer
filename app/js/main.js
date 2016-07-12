@@ -9,7 +9,7 @@
 // #343434
 
 // maybe use a Promise instead?
-let channels = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "comster404"],
+let channels = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "comster404", "2ggaming", "NoahJ456", "summit1g", "Meteos"],
     requestURL,
     baseURL = 'https://api.twitch.tv/kraken/channels/',
     endURL = '?callback=?',
@@ -25,6 +25,8 @@ function reqListener() {
 
 function buildStream(streamInfo) {
   // arr.forEach(function(streamInfo){
+
+  /*
   switch (streamInfo.status) {
     case 422:
       if (areMainChannelsLoaded) {
@@ -37,7 +39,10 @@ function buildStream(streamInfo) {
 
       return;
   }
+  */
 
+    // https://pixabay.com/static/uploads/photo/2013/04/01/21/29/help-99085_960_720.png
+    // https://image.freepik.com/free-icon/question-mark-in-a-circle_318-27276.png
     console.log(streamInfo);
 
     let thumbnailUrl = streamInfo.logo,
@@ -55,6 +60,23 @@ function buildStream(streamInfo) {
       status = streamInfo.status; // status = 'Channel Offline'; // add a case for a channel that is no longer active.
       statusColor = '#2D4059';
       statusOnOff = "offline";
+    }
+
+    switch (streamInfo.status) {
+      case 422:
+        thumbnailUrl = "https://image.freepik.com/free-icon/question-mark-in-a-circle_318-27276.png";
+        channelUrl = "#";
+        var channelNameRegex = /'(.+)'/gi;
+        var channelName = streamInfo.message.match(channelNameRegex)[0];
+        console.log("$$$ $$$ $$$");
+        channelName = channelName.split("");
+        channelName = channelName.splice(1, channelName.length-2).join("");
+        console.log(channelName);
+        name = channelName; // "channel"; // change name
+        status = streamInfo.message; // "This channel doesn't exist.";
+
+      default:
+
     }
 
     let $block = $('<div class="stream-block"></div>'),
@@ -105,11 +127,6 @@ $(document).ready(function() {
       // }); // End of getJSON
   });
 
-  // Make sure it only does it after the results came back
-  // console.log("code makes it here");
-  // buildStreams(profiles);
-
-
       // $searchInput = $('input[name=search]');
 
   // Remove placeholder text on search input focus
@@ -122,7 +139,6 @@ $(document).ready(function() {
   });
 
   // Filter Buttons
-
   $showAll.on('click', function() {
     $('.highlighted').removeClass('highlighted');
     $(this).addClass('highlighted');

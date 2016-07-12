@@ -1,7 +1,6 @@
 /*
 Color Scheme
 
-
 #0E1555
 #4E1184
 #932B77
@@ -149,6 +148,7 @@ a {
     justify-content: space-between;
     flex-direction: row;
     width: 100%;
+    margin-bottom: 3px;
     // padding-top: 5px;
     // padding-bottom: 5px;
     // padding: 0 10px;
@@ -182,7 +182,7 @@ a {
     // padding: 0;
 }
 #results {
-    background-color: $app-color;
+    background-color: $bg-color;
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
@@ -197,6 +197,8 @@ a {
     color: $main-text-color;
     border-bottom: 2px $bg-color;
     border-top: 2px $bg-color;
+    margin-top: 3px;
+    margin-bottom: 3px;
 }
 .stream-block img,
 .stream-block p {
@@ -219,9 +221,10 @@ a {
     margin: 0 25px;
     // width: %;
 }
-.stream-block p {
+.block-anchor p {
     margin: 0 30px;
     width: 30%;
+    text-align: left;
 }
 .online {
     background-color: $app-color;
