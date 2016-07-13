@@ -54,15 +54,16 @@ function buildStream(streamInfo) {
 
     if (streamInfo.mature) {
       status = streamInfo.status;
-      statusColor = '#FDE9C9';
+      statusColor = '#4A4DE7';
       statusOnOff = "online";
     } else {
       status = streamInfo.status; // status = 'Channel Offline'; // add a case for a channel that is no longer active.
-      statusColor = '#2D4059';
+      statusColor = '#7EA6F4';
       statusOnOff = "offline";
     }
 
     switch (streamInfo.status) {
+      case 404:
       case 422:
         thumbnailUrl = "https://image.freepik.com/free-icon/question-mark-in-a-circle_318-27276.png";
         channelUrl = "#";
@@ -82,8 +83,8 @@ function buildStream(streamInfo) {
     let $block = $('<div class="stream-block"></div>'),
     $anchorEl = $('<a href="' + channelUrl + '" target="_blank"></a>'),
     $imgEl = $('<img src="' + thumbnailUrl + '" class="channel-logo"/>'),
-    $nameEl = $('<p>' + name + '</p>'),
-    $statusEl = $('<p>' + status + '</p>');
+    $nameEl = $('<p class="channel-name">' + name + '</p>'),
+    $statusEl = $('<p class="channel-status">' + status + '</p>');
 
     $anchorEl.append([$imgEl, $nameEl, $statusEl]).addClass("block-anchor"); // .css('background-color',;
     $block.append($anchorEl).css('background-color', statusColor).addClass(statusOnOff).data('link', thumbnailUrl);

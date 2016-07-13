@@ -33,24 +33,28 @@ Alt Color Scheme
 #EA5455
 #FDE9C9
 
+#F1FAFB
+#A0E4F1
+#7EA6F4
+#4A4DE7
 
 */
 /******** BASE STYLES *******/
 body {
-  background-color: #343434;
-  color: #EA5455;
+  background-color: #A0E4F1;
+  color: #F1FAFB;
   font-size: 1.2em;
   display: flex;
   justify-content: center;
   font-family: "Source Sans Pro", Helvetica, sans-serif; }
 
 a {
-  color: #EA5455;
+  color: #F1FAFB;
   text-decoration: none; }
 
 /******** MAIN STYLES *******/
 #app-container {
-  background-color: #2D4059;
+  background-color: #7EA6F4;
   width: 600px;
   /* used to be 80% */
   display: flex;
@@ -60,15 +64,15 @@ a {
   margin-bottom: 5%; }
 
 .search-block {
-  background-color: #2D4059; }
+  background-color: #7EA6F4; }
 
 #app-container div {
   text-align: center; }
 
 #no-such-channel {
   display: none;
-  color: #343434;
-  background-color: #EA5455;
+  color: #A0E4F1;
+  background-color: #F1FAFB;
   padding-bottom: 1em;
   padding-top: 1em;
   width: 100%;
@@ -80,25 +84,25 @@ a {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  color: #EA5455;
-  background-color: #2D4059; }
+  color: #F1FAFB;
+  background-color: #7EA6F4; }
 
 #search-button {
   margin: 5% 0;
   max-width: 50px;
   font-size: 1em;
   cursor: pointer;
-  background-color: #FDE9C9;
-  color: #EA5455;
+  background-color: #4A4DE7;
+  color: #F1FAFB;
   border-radius: 15px;
   padding: 2% 5%; }
 
 #search-button:hover {
-  color: #2D4059; }
+  color: #7EA6F4; }
 
 #search-box {
-  background-color: #FDE9C9;
-  color: #EA5455;
+  background-color: #4A4DE7;
+  color: #F1FAFB;
   margin: 0 auto;
   /* round corners */
   border-radius: 20px;
@@ -109,18 +113,18 @@ a {
   padding: 2% 3%; }
 
 #app-container input::-webkit-input-placeholder {
-  color: #EA5455; }
+  color: #F1FAFB; }
 
 #state-indicator {
-  background-color: #2D4059;
+  background-color: #7EA6F4;
   display: flex;
   justify-content: center;
   padding: 5% 0;
   font-size: 2em;
-  color: #FDE9C9; }
+  color: #4A4DE7; }
 
 .filter-buttons {
-  background-color: #FDE9C9;
+  background-color: #A0E4F1;
   display: flex;
   justify-content: space-between;
   flex-direction: row;
@@ -128,32 +132,32 @@ a {
   margin-bottom: 3px; }
 
 .filter-button {
-  background-color: #2D4059;
+  background-color: #7EA6F4;
   flex: 1;
   width: auto;
   padding: 5px 10px; }
 
 .highlighted {
-  background-color: #FDE9C9; }
+  background-color: #4A4DE7; }
 
 .highlighted p {
-  color: #343434; }
+  color: #A0E4F1; }
 
 .filter-button {
   cursor: pointer; }
 
 #results-line {
   width: 60%;
-  background-color: #FDE9C9;
+  background-color: #4A4DE7;
   display: block;
   height: 5px;
   border: 3;
   border-radius: 5px;
   border-top: 1px solid;
-  border-color: #2D4059; }
+  border-color: #7EA6F4; }
 
 #results {
-  background-color: #343434;
+  background-color: #A0E4F1;
   display: flex;
   justify-content: flex-start;
   flex-direction: column; }
@@ -164,9 +168,9 @@ a {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  color: #EA5455;
-  border-bottom: 2px #343434;
-  border-top: 2px #343434;
+  color: #F1FAFB;
+  border-bottom: 2px #A0E4F1;
+  border-top: 2px #A0E4F1;
   margin-top: 3px;
   margin-bottom: 3px; }
 
@@ -184,18 +188,24 @@ a {
   text-align: center; }
 
 .channel-logo {
-  height: 75px;
-  width: 75px;
+  height: 15%;
+  width: 15%;
   border-radius: 50%;
-  border: 2px solid #343434;
+  border: 2px solid #A0E4F1;
   margin: 0 25px; }
 
-.block-anchor p {
+.channel-name, channel-status {
   margin: 0 30px;
-  width: 30%;
   text-align: left; }
 
+.channel-name {
+  width: 20%; }
+
+.channel-status {
+  font-size: 0.8em;
+  width: 40%; }
+
 .online {
-  background-color: #FDE9C9; }
+  background-color: #4A4DE7; }
 
 /******** PSEUDO STYLES *******/

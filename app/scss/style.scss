@@ -33,20 +33,24 @@ Alt Color Scheme
 #EA5455
 #FDE9C9
 
+#F1FAFB
+#A0E4F1
+#7EA6F4
+#4A4DE7
 
 */
 /******** BASE STYLES *******/
 // testing
-$online-bg: #FDE9C9;
-$offline-bg: #2D4059; //
-$link-color: #EA5455;
-$highlight-font-color: #343434;
-$bg-color: #343434;
-$app-color: #FDE9C9;
-$alt-app-color: #FDE9C9;
-$main-text-color: #EA5455;
+$online-bg: #4A4DE7;
+$offline-bg: #7EA6F4; //
+$link-color: #F1FAFB;
+$highlight-font-color: #A0E4F1;
+$bg-color: #A0E4F1;
+$app-color: #4A4DE7;
+$alt-app-color: #4A4DE7;
+$main-text-color: #F1FAFB;
 $font-stack: 'Source Sans Pro', Helvetica, sans-serif; // Example
-$test-color: #EA5455;
+$test-color: #F1FAFB;
 $main-font-size: 1.2em;
 body {
     background-color: $bg-color;
@@ -142,7 +146,7 @@ a {
     color: $app-color; // why doesn't this work
 }
 .filter-buttons {
-    background-color: $alt-app-color;
+    background-color: $bg-color;
     display: flex;
     // align-items: center;
     justify-content: space-between;
@@ -214,17 +218,31 @@ a {
   text-align: center;
 }
 .channel-logo {
-    height: 75px;
-    width: 75px;
+    height: 15%;
+    width: 15%;
     border-radius: 50%;
     border: 2px solid $bg-color;
     margin: 0 25px;
     // width: %;
 }
+
+.channel-name, channel-status {
+  margin: 0 30px;
+
+  text-align: left;
+}
+
+.channel-name {
+  width: 20%;
+}
+
+.channel-status {
+  font-size: 0.8em;
+  width: 40%;
+}
+
 .block-anchor p {
-    margin: 0 30px;
-    width: 30%;
-    text-align: left;
+
 }
 .online {
     background-color: $app-color;
