@@ -1,10 +1,8 @@
 /*
-
 // For testing: ybicanoooobov BeyondTheSummit Dota2ruhub M1dwayTV OnisDota
-
 // Ref: https://api.twitch.tv/kraken/streams?game=StarCraft+II%3A+Heart+of+the+Swarm&channel=test_channel,test_channel2
 
-EXAMPLE
+TwitchTV API Response Object Example
 {
   mature: false,
   status: "@dogwaddle working on Pomodoro Timer #Programming #LearningJavaScript ",
@@ -41,12 +39,48 @@ EXAMPLE
   }
 }
 
+Color Scheme Options
 
+#0E1555
+#4E1184
+#932B77
+#FD367E
 
-// $results.append($('<a href="' +  channelUrl + '" target="_blank"><div class="stream-block"><img src="' + thumbnailUrl + '" class="channel-logo"/><p>' + name + '</p><p>' + status + '</p></div></a>')
-//         // .attr({'class': 'stream-block' })
-//         .children().css('background-color', statusColor)
-//         .addClass(statusOnOff)
-//         // .wrapInner($('<a href="' +  channelUrl + '" target="_blank"></a>'))
-//       );
+Alt Color Scheme
+#A42127
+#C83B3B
+#EF9B59
+#FEE785
+
+#252839
+#677077
+#b5b5b7
+#f2b632
+
+#c9c9c9
+#e3e3e3
+#9ad3de
+#89bdd3
+
+#001F3F
+#083358
+#FFD717
+#0DA574
+
+#343434
+#2D4059
+#EA5455
+#FDE9C9
+
+#F1FAFB
+#A0E4F1
+#7EA6F4
+#4A4DE7
+
+#BBE1C3
+#A7CDBD
+#869D7A
+#91785D
+#8B5D33
+
 */

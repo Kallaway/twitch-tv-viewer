@@ -9,7 +9,7 @@
 // #343434
 
 // maybe use a Promise instead?
-let channels = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "comster404", "2ggaming", "NoahJ456", "summit1g", "Meteos"],
+let channels = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "comster404", "2ggaming", "NoahJ456", "Meteos"],
     requestURL,
     baseURL = 'https://api.twitch.tv/kraken/channels/',
     endURL = '?callback=?',
@@ -26,21 +26,6 @@ function reqListener() {
 function buildStream(streamInfo) {
   // arr.forEach(function(streamInfo){
 
-  /*
-  switch (streamInfo.status) {
-    case 422:
-      if (areMainChannelsLoaded) {
-        $noSuchChannel.slideDown(300); // change it so it knows when the channels are being added from input
-        // This means that the channel no longer exists. // closed
-      }
-
-      return;
-    case 404:
-
-      return;
-  }
-  */
-
     // https://pixabay.com/static/uploads/photo/2013/04/01/21/29/help-99085_960_720.png
     // https://image.freepik.com/free-icon/question-mark-in-a-circle_318-27276.png
     console.log(streamInfo);
@@ -54,11 +39,11 @@ function buildStream(streamInfo) {
 
     if (streamInfo.mature) {
       status = streamInfo.status;
-      statusColor = '#4A4DE7';
+      statusColor = '#8B5D33';
       statusOnOff = "online";
     } else {
       status = streamInfo.status; // status = 'Channel Offline'; // add a case for a channel that is no longer active.
-      statusColor = '#7EA6F4';
+      statusColor = '#91785D';
       statusOnOff = "offline";
     }
 
@@ -77,7 +62,12 @@ function buildStream(streamInfo) {
         status = streamInfo.message; // "This channel doesn't exist.";
 
       default:
-
+        if (thumbnailUrl == null) {
+          thumbnailUrl = "https://image.freepik.com/free-icon/question-mark-in-a-circle_318-27276.png";
+        }
+        if (streamInfo.status == null) {
+          status = "User has not specified a status";
+        }
     }
 
     let $block = $('<div class="stream-block"></div>'),
@@ -121,6 +111,8 @@ $(document).ready(function() {
           areMainChannelsLoaded = true;
         }
         // areMainChannelsLoaded = true;
+      }).error(function(e) {
+        console.log("Problem detected: " + e.message);
       });
       // .error(function(e) {
       //   console.log("Error is registered"); // check

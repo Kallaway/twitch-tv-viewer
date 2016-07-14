@@ -1,61 +1,21 @@
-/*
-Color Scheme
-
-#0E1555
-#4E1184
-#932B77
-#FD367E
-
-Alt Color Scheme
-#A42127
-#C83B3B
-#EF9B59
-#FEE785
-
-
-#252839
-#677077
-#b5b5b7
-#f2b632
-
-#c9c9c9
-#e3e3e3
-#9ad3de
-#89bdd3
-
-#001F3F
-#083358
-#FFD717
-#0DA574
-
-#343434
-#2D4059
-#EA5455
-#FDE9C9
-
-#F1FAFB
-#A0E4F1
-#7EA6F4
-#4A4DE7
-
-*/
 /******** BASE STYLES *******/
 body {
-  background-color: #A0E4F1;
-  color: #F1FAFB;
+  background-color: #A7CDBD;
+  color: #BBE1C3;
   font-size: 1.2em;
   display: flex;
   justify-content: center;
-  font-family: "Source Sans Pro", Helvetica, sans-serif; }
+  font-family: "Source Sans Pro", Helvetica, sans-serif;
+  min-width: 450px; }
 
 a {
-  color: #F1FAFB;
+  color: #BBE1C3;
   text-decoration: none; }
 
-/******** MAIN STYLES *******/
+/******* MAIN STYLES *******/
 #app-container {
-  background-color: #7EA6F4;
-  width: 600px;
+  background-color: #91785D;
+  width: 40%;
   /* used to be 80% */
   display: flex;
   justify-content: center;
@@ -64,15 +24,15 @@ a {
   margin-bottom: 5%; }
 
 .search-block {
-  background-color: #7EA6F4; }
+  background-color: #91785D; }
 
 #app-container div {
   text-align: center; }
 
 #no-such-channel {
   display: none;
-  color: #A0E4F1;
-  background-color: #F1FAFB;
+  color: #A7CDBD;
+  background-color: #BBE1C3;
   padding-bottom: 1em;
   padding-top: 1em;
   width: 100%;
@@ -84,25 +44,25 @@ a {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  color: #F1FAFB;
-  background-color: #7EA6F4; }
+  color: #BBE1C3;
+  background-color: #91785D; }
 
 #search-button {
   margin: 5% 0;
   max-width: 50px;
   font-size: 1em;
   cursor: pointer;
-  background-color: #4A4DE7;
-  color: #F1FAFB;
+  background-color: #8B5D33;
+  color: #BBE1C3;
   border-radius: 15px;
   padding: 2% 5%; }
 
 #search-button:hover {
-  color: #7EA6F4; }
+  color: #91785D; }
 
 #search-box {
-  background-color: #4A4DE7;
-  color: #F1FAFB;
+  background-color: #8B5D33;
+  color: #BBE1C3;
   margin: 0 auto;
   /* round corners */
   border-radius: 20px;
@@ -113,54 +73,45 @@ a {
   padding: 2% 3%; }
 
 #app-container input::-webkit-input-placeholder {
-  color: #F1FAFB; }
+  color: #BBE1C3; }
 
 #state-indicator {
-  background-color: #7EA6F4;
+  background-color: #91785D;
   display: flex;
   justify-content: center;
   padding: 5% 0;
   font-size: 2em;
-  color: #4A4DE7; }
+  color: #BBE1C3; }
 
 .filter-buttons {
-  background-color: #A0E4F1;
+  background-color: #A7CDBD;
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  width: 100%;
-  margin-bottom: 3px; }
+  width: 100%; }
 
 .filter-button {
-  background-color: #7EA6F4;
+  background-color: #91785D;
   flex: 1;
   width: auto;
   padding: 5px 10px; }
 
 .highlighted {
-  background-color: #4A4DE7; }
+  background-color: #8B5D33; }
 
 .highlighted p {
-  color: #A0E4F1; }
+  color: #A7CDBD; }
 
 .filter-button {
   cursor: pointer; }
 
-#results-line {
-  width: 60%;
-  background-color: #4A4DE7;
-  display: block;
-  height: 5px;
-  border: 3;
-  border-radius: 5px;
-  border-top: 1px solid;
-  border-color: #7EA6F4; }
-
 #results {
-  background-color: #A0E4F1;
+  background-color: #A7CDBD;
   display: flex;
   justify-content: flex-start;
-  flex-direction: column; }
+  flex-direction: column;
+  padding-top: 3px;
+  margin-color: red; }
 
 /* created using jQuery */
 .stream-block {
@@ -168,9 +119,9 @@ a {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  color: #F1FAFB;
-  border-bottom: 2px #A0E4F1;
-  border-top: 2px #A0E4F1;
+  color: #BBE1C3;
+  border-bottom: 2px #A7CDBD;
+  border-top: 2px #A7CDBD;
   margin-top: 3px;
   margin-bottom: 3px; }
 
@@ -184,17 +135,17 @@ a {
   align-items: center;
   justify-content: flex-start;
   padding: 5px 0;
-  min-width: 600px;
   text-align: center; }
 
 .channel-logo {
   height: 15%;
   width: 15%;
   border-radius: 50%;
-  border: 2px solid #A0E4F1;
+  border: 2px solid #A7CDBD;
   margin: 0 25px; }
 
-.channel-name, channel-status {
+.channel-name,
+channel-status {
   margin: 0 30px;
   text-align: left; }
 
@@ -203,9 +154,30 @@ a {
 
 .channel-status {
   font-size: 0.8em;
-  width: 40%; }
+  width: 40%;
+  text-align: left; }
 
 .online {
-  background-color: #4A4DE7; }
+  background-color: #8B5D33;
+  width: 100%; }
 
-/******** PSEUDO STYLES *******/
+/******* PSEUDO STYLES *******/
+/******* MEDIA QUERIES *******/
+@media (max-width: 850px) {
+  #app-container {
+    width: 80%; }
+  .channel-status,
+  .channel-name {
+    width: 60%;
+    align-items: center;
+    text-align: center;
+    justify-content: center; }
+  #stream-block {
+    align-items: center;
+    justify-content: center;
+    display: flex; }
+  .block-anchor {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; } }
