@@ -1,53 +1,43 @@
 /******** BASE STYLES *******/
-$online-bg: #8B5D33;
-$offline-bg: #91785D; //
-$link-color: #BBE1C3;
-$highlight-font-color: #A7CDBD;
-$bg-color: #A7CDBD;
-$app-color: #8B5D33;
-$alt-app-color: #8B5D33;
-$main-text-color: #BBE1C3;
+$dark-brown: #8B5D33;
+$light-brown: #91785D;
+$dark-lime: #A7CDBD;
+$light-lime: #BBE1C3;
 $font-stack: 'Source Sans Pro', Helvetica, sans-serif;
-$test-color: #BBE1C3;
 $main-font-size: 1.2em;
 body {
-    background-color: $bg-color;
-    color: $test-color;
+    background-color: $dark-lime;
+    color: $light-lime;
     font-size: $main-font-size;
     display: flex;
     justify-content: center;
     font-family: $font-stack;
-    min-width: 450px;
+    min-width: 330px;
 }
 a {
-    color: $link-color;
+    color: $light-lime;
     text-decoration: none;
 }
 /******* MAIN STYLES *******/
 #app-container {
-    background-color: $offline-bg;
+    background-color: $light-brown;
     width: 40%;
-
-    /* used to be 80% */
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    // align-items: center;
-    // margin: 0 auto;
     margin-bottom: 5%;
 }
 .search-block {
-    background-color: $offline-bg;
+    background-color: $light-brown;
 }
 #app-container div {
-    // color: $main-text-color;
     text-align: center;
 }
 #no-such-channel {
     display: none;
-    color: $bg-color;
-    background-color: $main-text-color;
+    color: $dark-lime;
+    background-color: $light-lime;
     padding-bottom: 1em;
     padding-top: 1em;
     width: 100%;
@@ -57,30 +47,28 @@ a {
     margin: 2% 0;
     display: flex;
     flex-direction: column;
-    justify-content: space-around; // check
+    justify-content: space-around;
     align-items: center;
-    color: $main-text-color;
-    // background-color: $app-color;
-    background-color: $offline-bg;
+    color: $light-lime;
+    background-color: $light-brown;
 }
 #search-button {
     margin: 5% 0;
     max-width: 50px;
     font-size: 1em;
     cursor: pointer;
-    background-color: $app-color;
-    color: $main-text-color;
+    background-color: $dark-brown;
+    color: $light-lime;
     border-radius: 15px;
     padding: 2% 5%;
 }
 #search-button:hover {
-    color: $offline-bg;
+    color: $light-brown;
 }
 #search-box {
-    background-color: $app-color;
-    color: $main-text-color;
+    background-color: $dark-brown;
+    color: $light-lime;
     margin: 0 auto;
-    /* round corners */
     border-radius: 20px;
     font-size: 1.2em;
     text-align: center;
@@ -89,53 +77,43 @@ a {
     padding: 2% 3%;
 }
 #app-container input::-webkit-input-placeholder {
-    // color: $app-color;
-    color: $main-text-color;
+    color: $light-lime;
 }
 #state-indicator {
-    // background-color: $app-color;
-    background-color: $offline-bg;
-    // background-color: $alt-app-color;
+    background-color: $light-brown;
     display: flex;
     justify-content: center;
     padding: 5% 0;
     font-size: 2em;
-    color: $main-text-color; // why doesn't this work
+    color: $light-lime;
 }
 .filter-buttons {
-    background-color: $bg-color;
+    background-color: $dark-lime;
     display: flex;
-    // align-items: center;
     justify-content: space-between;
     flex-direction: row;
     width: 100%;
-    // margin-bottom: 6px;
-    // padding-top: 5px;
-    // padding-bottom: 5px;
-    // padding: 0 10px;
 }
 .filter-button {
-    background-color: $offline-bg;
+    background-color: $light-brown;
     flex: 1;
     width: auto;
     padding: 5px 10px;
-    // margin: 0 50%;
 }
 .highlighted {
-    background-color: $app-color;
+    background-color: $dark-brown;
 }
 .highlighted p {
-    color: $highlight-font-color;
+    color: $dark-lime;
 }
 .filter-button {
     cursor: pointer;
 }
 #results {
-    background-color: $bg-color;
+    background-color: $dark-lime;
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
-    // border-radius: 5%;
     padding-top: 3px;
     margin-color: red;
 }
@@ -145,9 +123,9 @@ a {
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    color: $main-text-color;
-    border-bottom: 2px $bg-color;
-    border-top: 2px $bg-color;
+    color: $light-lime;
+    border-bottom: 2px $dark-lime;
+    border-top: 2px $dark-lime;
     margin-top: 3px;
     margin-bottom: 3px;
 }
@@ -161,37 +139,43 @@ a {
     align-items: center;
     justify-content: flex-start;
     padding: 5px 0;
-    // min-width: 600px;
     text-align: center;
 }
 .channel-logo {
     height: 15%;
     width: 15%;
     border-radius: 50%;
-    border: 2px solid $bg-color;
+    border: 2px solid $dark-lime;
     margin: 0 25px;
-    // width: %;
 }
-.channel-name,
-channel-status {
+// .channel-name,
+.channel-status {
     margin: 0 30px;
     text-align: left;
 }
 .channel-name {
     width: 20%;
+    font-size: 0.8em;
 }
 .channel-status {
     font-size: 0.8em;
-    width: 40%;
+    width: 35%;
     text-align: left;
 }
 .online {
-    background-color: $app-color;
+    background-color: $dark-brown;
     width: 100%;
 }
 /******* PSEUDO STYLES *******/
 
 /******* MEDIA QUERIES *******/
+@media (max-width: 1100px) {
+  #app-container {
+    width: 60%;
+  }
+}
+
+
 @media (max-width: 850px) {
 
   #app-container {
@@ -217,6 +201,14 @@ channel-status {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+  }
+  //
+  // .online {
+  //   width: 100%;
+  // }
+
+  #results {
+    width: 100%;
   }
 
 }
